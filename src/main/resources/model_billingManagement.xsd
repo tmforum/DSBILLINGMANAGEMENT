@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace='http://orange.com/api/billingManagement/tmf/v2/model/business' attributeFormDefault='unqualified' elementFormDefault='qualified' xmlns='http://orange.com/api/billingManagement/tmf/v2/model/business' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <xsd:annotation id='sidTag'>
+    <xsd:appinfo></xsd:appinfo>
+  </xsd:annotation>
+  <xsd:element name='BillingAccount' type='BillingAccount' />
+  <xsd:element name='CustomerAccount' type='CustomerAccount' />
+  <xsd:element name='Currency' type='Currency' />
+  <xsd:element name='CustomerBillPresentationMedia' type='CustomerBillPresentationMedia' />
+  <xsd:element name='CustomerBillFormat' type='CustomerBillFormat' />
+  <xsd:element name='CustomerBillingCycleSpecification' type='CustomerBillingCycleSpecification' />
+  <xsd:element name='RelatedParty' type='RelatedParty' />
+  <xsd:element name='PaymentMean' type='PaymentMean' />
+  <xsd:element name='BillingAccountBalance' type='BillingAccountBalance' />
+  <xsd:element name='AppliedCustomerBillingCharge' type='AppliedCustomerBillingCharge' />
+  <xsd:element name='AppliedCustomerBillingTaxRate' type='AppliedCustomerBillingTaxRate' />
+  <xsd:element name='ServiceId' type='ServiceId' />
+  <xsd:element name='ProductSpecification' type='ProductSpecification' />
+  <xsd:element name='TimePeriod' type='TimePeriod' />
+  <xsd:element name='SettlementNoteAdvice' type='SettlementNoteAdvice' />
+  <xsd:element name='TaxItem' type='TaxItem' />
+  <xsd:element name='SettlementMethod' type='SettlementMethod' />
+  <xsd:element name='Receiver' type='Receiver' />
+  <xsd:element name='Issuer' type='Issuer' />
+  <xsd:element name='SettlementNoteImage' type='SettlementNoteImage' />
+  <xsd:element name='SettlementNoteItem' type='SettlementNoteItem' />
+  <xsd:element name='TaxRegistration' type='TaxRegistration' />
+  <xsd:complexType name='BillingAccount'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:long' minOccurs='0' />
+      <xsd:element name='href' type='xsd:string' minOccurs='0' />
+      <xsd:element name='ratingType' type='xsd:string' minOccurs='0' />
+      <xsd:element name='name' type='xsd:string' minOccurs='0' />
+      <xsd:element name='state' type='BillingAccountState' minOccurs='0' />
+      <xsd:element name='validFor' type='TimePeriod' minOccurs='0' />
+      <xsd:element name='customerAccount' type='CustomerAccount' minOccurs='0' />
+      <xsd:element name='customerBillingCycleSpecification' type='CustomerBillingCycleSpecification' minOccurs='0' />
+      <xsd:element name='customerBillFormat' type='CustomerBillFormat' minOccurs='0' />
+      <xsd:element name='customerBillPresentationMedia' type='CustomerBillPresentationMedia' minOccurs='0' />
+      <xsd:element name='currency' type='Currency' minOccurs='0' />
+      <xsd:element name='billingAccountBalance' type='BillingAccountBalance' minOccurs='0' maxOccurs='unbounded' />
+      <xsd:element name='relatedParty' type='RelatedParty' minOccurs='0' maxOccurs='unbounded' />
+      <xsd:element name='paymentMean' type='PaymentMean' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='CustomerAccount'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:string' minOccurs='0' />
+      <xsd:element name='href' type='xsd:string' minOccurs='0' />
+      <xsd:element name='name' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='Currency'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='currencyCode' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='CustomerBillPresentationMedia'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:long' minOccurs='0' />
+      <xsd:element name='href' type='xsd:string' minOccurs='0' />
+      <xsd:element name='name' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='CustomerBillFormat'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:long' minOccurs='0' />
+      <xsd:element name='href' type='xsd:string' minOccurs='0' />
+      <xsd:element name='name' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='CustomerBillingCycleSpecification'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:long' minOccurs='0' />
+      <xsd:element name='href' type='xsd:string' minOccurs='0' />
+      <xsd:element name='name' type='xsd:string' minOccurs='0' />
+      <xsd:element name='billingDateShift' type='xsd:int' minOccurs='0' />
+      <xsd:element name='frequency' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='RelatedParty'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:string' minOccurs='0' />
+      <xsd:element name='href' type='xsd:string' minOccurs='0' />
+      <xsd:element name='role' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='PaymentMean'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:string' minOccurs='0' />
+      <xsd:element name='href' type='xsd:string' minOccurs='0' />
+      <xsd:element name='name' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='BillingAccountBalance'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='type' type='xsd:string' minOccurs='0' />
+      <xsd:element name='amount' type='xsd:float' minOccurs='0' />
+      <xsd:element name='validFor' type='TimePeriod' minOccurs='0' />
+      <xsd:element name='status' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='AppliedCustomerBillingCharge'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:long' minOccurs='0' />
+      <xsd:element name='href' type='xsd:string' minOccurs='0' />
+      <xsd:element name='date' type='xsd:dateTime' minOccurs='0' />
+      <xsd:element name='description' type='xsd:string' minOccurs='0' />
+      <xsd:element name='type' type='xsd:string' minOccurs='0' />
+      <xsd:element name='currencyCode' type='xsd:string' minOccurs='0' />
+      <xsd:element name='taxIncludedAmount' type='xsd:float' minOccurs='0' />
+      <xsd:element name='taxExcludedAmount' type='xsd:float' minOccurs='0' />
+      <xsd:element name='appliedCustomerBillingTaxRate' type='AppliedCustomerBillingTaxRate' minOccurs='0' maxOccurs='unbounded' />
+      <xsd:element name='serviceId' type='ServiceId' minOccurs='0' maxOccurs='unbounded' />
+      <xsd:element name='productSpecification' type='ProductSpecification' minOccurs='0' maxOccurs='unbounded' />
+      <xsd:element name='period' type='TimePeriod' minOccurs='0' maxOccurs='unbounded' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='AppliedCustomerBillingTaxRate'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='amount' type='xsd:float' minOccurs='0' />
+      <xsd:element name='taxCategory' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='ServiceId'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:string' minOccurs='0' />
+      <xsd:element name='type' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='ProductSpecification'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='name' type='xsd:string' minOccurs='0' />
+      <xsd:element name='productNumber' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='TimePeriod'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='startDateTime' type='xsd:dateTime' minOccurs='0' />
+      <xsd:element name='endDateTime' type='xsd:dateTime' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='SettlementNoteAdvice'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:long' minOccurs='0' />
+      <xsd:element name='href' type='xsd:string' minOccurs='0' />
+      <xsd:element name='date' type='xsd:dateTime' minOccurs='0' />
+      <xsd:element name='description' type='xsd:string' minOccurs='0' />
+      <xsd:element name='paymentDueDate' type='xsd:dateTime' minOccurs='0' />
+      <xsd:element name='taxDate' type='xsd:dateTime' minOccurs='0' />
+      <xsd:element name='currencyCode' type='xsd:string' minOccurs='0' />
+      <xsd:element name='taxExcludedAmount' type='xsd:float' minOccurs='0' />
+      <xsd:element name='taxIncludedAmount' type='xsd:float' minOccurs='0' />
+      <xsd:element name='taxItem' type='TaxItem' minOccurs='0' maxOccurs='unbounded' />
+      <xsd:element name='settlementMethod' type='SettlementMethod' minOccurs='0' />
+      <xsd:element name='receiver' type='Receiver' minOccurs='0' />
+      <xsd:element name='issuer' type='Issuer' minOccurs='0' />
+      <xsd:element name='settlementNoteImage' type='SettlementNoteImage' minOccurs='0' />
+      <xsd:element name='settlementNoteItem' type='SettlementNoteItem' minOccurs='0' maxOccurs='unbounded' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='TaxItem'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='taxCategory' type='xsd:string' minOccurs='0' />
+      <xsd:element name='taxRate' type='xsd:float' minOccurs='0' />
+      <xsd:element name='taxAmount' type='xsd:float' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='SettlementMethod'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='code' type='xsd:string' minOccurs='0' />
+      <xsd:element name='label' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='Receiver'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:string' minOccurs='0' />
+      <xsd:element name='href' type='xsd:string' minOccurs='0' />
+      <xsd:element name='taxRegistration' type='TaxRegistration' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='Issuer'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='id' type='xsd:string' minOccurs='0' />
+      <xsd:element name='href' type='xsd:string' minOccurs='0' />
+      <xsd:element name='taxRegistration' type='TaxRegistration' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='SettlementNoteImage'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='imageFormat' type='xsd:string' minOccurs='0' />
+      <xsd:element name='imageSize' type='xsd:string' minOccurs='0' />
+      <xsd:element name='imageFileName' type='xsd:string' minOccurs='0' />
+      <xsd:element name='imageFileURL' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='SettlementNoteItem'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='itemNumber' type='xsd:string' minOccurs='0' />
+      <xsd:element name='itemId' type='xsd:string' minOccurs='0' />
+      <xsd:element name='itemLabel' type='xsd:string' minOccurs='0' />
+      <xsd:element name='quantity' type='xsd:string' minOccurs='0' />
+      <xsd:element name='taxItem' type='TaxItem' minOccurs='0' maxOccurs='unbounded' />
+      <xsd:element name='period' type='TimePeriod' minOccurs='0' />
+      <xsd:element name='productSpecification' type='ProductSpecification' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name='TaxRegistration'>
+    <xsd:sequence minOccurs='1' maxOccurs='1'>
+      <xsd:element name='number' type='xsd:string' minOccurs='0' />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name='BillingAccountState'>
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='Defined'>
+        <xsd:annotation />
+      </xsd:enumeration>
+      <xsd:enumeration value='Active'>
+        <xsd:annotation />
+      </xsd:enumeration>
+      <xsd:enumeration value='Pending_Update'>
+        <xsd:annotation />
+      </xsd:enumeration>
+      <xsd:enumeration value='Suspended'>
+        <xsd:annotation />
+      </xsd:enumeration>
+      <xsd:enumeration value='Pending_Closed'>
+        <xsd:annotation />
+      </xsd:enumeration>
+      <xsd:enumeration value='Closed'>
+        <xsd:annotation />
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>
