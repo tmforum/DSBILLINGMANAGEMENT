@@ -152,7 +152,7 @@ public class BillingAccountAdminResource {
             // remove event(s) binding to the resource
             List<BillingAccountEvent> events = eventFacade.findAll();
             for (BillingAccountEvent event : events) {
-                if (event.getEvent().getId().equals(id)) {
+                if (event.getResource().getId().equals(id)) {
                     eventFacade.remove(event.getId());
                 }
             }
@@ -204,7 +204,7 @@ public class BillingAccountAdminResource {
         int previousRows = eventFacade.count();
         List<BillingAccountEvent> events = eventFacade.findAll();
         for (BillingAccountEvent event : events) {
-            if (event.getEvent().getId().equals(id)) {
+            if (event.getResource().getId().equals(id)) {
                 eventFacade.remove(event.getId());
 
             }

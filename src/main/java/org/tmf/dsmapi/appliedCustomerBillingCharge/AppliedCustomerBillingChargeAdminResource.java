@@ -152,7 +152,7 @@ public class AppliedCustomerBillingChargeAdminResource {
             // remove event(s) binding to the resource
             List<AppliedCustomerBillingChargeEvent> events = eventFacade.findAll();
             for (AppliedCustomerBillingChargeEvent event : events) {
-                if (event.getEvent().getId().equals(id)) {
+                if (event.getResource().getId().equals(id)) {
                     eventFacade.remove(event.getId());
                 }
             }
@@ -204,7 +204,7 @@ public class AppliedCustomerBillingChargeAdminResource {
         int previousRows = eventFacade.count();
         List<AppliedCustomerBillingChargeEvent> events = eventFacade.findAll();
         for (AppliedCustomerBillingChargeEvent event : events) {
-            if (event.getEvent().getId().equals(id)) {
+            if (event.getResource().getId().equals(id)) {
                 eventFacade.remove(event.getId());
 
             }

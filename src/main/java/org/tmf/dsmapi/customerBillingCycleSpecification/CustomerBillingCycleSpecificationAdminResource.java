@@ -152,7 +152,7 @@ public class CustomerBillingCycleSpecificationAdminResource {
             // remove event(s) binding to the resource
             List<CustomerBillingCycleSpecificationEvent> events = eventFacade.findAll();
             for (CustomerBillingCycleSpecificationEvent event : events) {
-                if (event.getEvent().getId().equals(id)) {
+                if (event.getResource().getId().equals(id)) {
                     eventFacade.remove(event.getId());
                 }
             }
@@ -204,7 +204,7 @@ public class CustomerBillingCycleSpecificationAdminResource {
         int previousRows = eventFacade.count();
         List<CustomerBillingCycleSpecificationEvent> events = eventFacade.findAll();
         for (CustomerBillingCycleSpecificationEvent event : events) {
-            if (event.getEvent().getId().equals(id)) {
+            if (event.getResource().getId().equals(id)) {
                 eventFacade.remove(event.getId());
 
             }

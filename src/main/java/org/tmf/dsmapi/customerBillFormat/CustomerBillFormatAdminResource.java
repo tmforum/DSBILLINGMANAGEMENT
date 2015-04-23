@@ -152,7 +152,7 @@ public class CustomerBillFormatAdminResource {
             // remove event(s) binding to the resource
             List<CustomerBillFormatEvent> events = eventFacade.findAll();
             for (CustomerBillFormatEvent event : events) {
-                if (event.getEvent().getId().equals(id)) {
+                if (event.getResource().getId().equals(id)) {
                     eventFacade.remove(event.getId());
                 }
             }
@@ -204,7 +204,7 @@ public class CustomerBillFormatAdminResource {
         int previousRows = eventFacade.count();
         List<CustomerBillFormatEvent> events = eventFacade.findAll();
         for (CustomerBillFormatEvent event : events) {
-            if (event.getEvent().getId().equals(id)) {
+            if (event.getResource().getId().equals(id)) {
                 eventFacade.remove(event.getId());
 
             }

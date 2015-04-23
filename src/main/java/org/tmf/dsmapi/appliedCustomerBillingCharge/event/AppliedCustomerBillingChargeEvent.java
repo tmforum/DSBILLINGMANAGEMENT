@@ -12,7 +12,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import static org.codehaus.jackson.annotate.JsonAutoDetect.Visibility.ANY;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.tmf.dsmapi.commons.utils.CustomJsonDateSerializer;
@@ -37,11 +40,31 @@ public class AppliedCustomerBillingChargeEvent implements Serializable {
     @Enumerated(value = EnumType.STRING)
     private AppliedCustomerBillingChargeEventTypeEnum eventType;
 
-    private AppliedCustomerBillingCharge event; //check for object
-
+    private AppliedCustomerBillingCharge resource; //check for object
+@JsonIgnore 
     public String getId() {
         return id;
     }
+    
+      
+    @JsonAutoDetect(fieldVisibility = ANY)
+    class EventBody {
+        private AppliedCustomerBillingCharge appliedCustomerBillingCharge;
+        public AppliedCustomerBillingCharge getAppliedCustomerBillingCharge() {
+            return appliedCustomerBillingCharge;
+        }
+        public EventBody(AppliedCustomerBillingCharge appliedCustomerBillingCharge) { 
+        this.appliedCustomerBillingCharge = appliedCustomerBillingCharge;
+    }
+    
+       
+    }
+   @JsonProperty("event")
+   public EventBody getEvent() {
+       
+       return new EventBody(getResource() );
+   }
+    
 
     public void setId(String id) {
         this.id = id;
@@ -63,17 +86,25 @@ public class AppliedCustomerBillingChargeEvent implements Serializable {
         this.eventType = eventType;
     }
 
-    public AppliedCustomerBillingCharge getEvent() {
-        return event;
+    
+    
+    @JsonIgnore
+    public AppliedCustomerBillingCharge getResource() {
+        
+        
+        return resource;
     }
 
-    public void setEvent(AppliedCustomerBillingCharge event) {
-        this.event = event;
+    public void setResource(AppliedCustomerBillingCharge resource) {
+        this.resource = resource;
     }
 
     @Override
     public String toString() {
-        return "AppliedCustomerBillingChargeEvent{" + "id=" + id + ", eventTime=" + eventTime + ", eventType=" + eventType + ", event=" + event + '}';
+        return "AppliedCustomerBillingChargeEvent{" + "id=" + id + ", eventTime=" + eventTime + ", eventType=" + eventType + ", resource=" + resource + '}';
     }
+
+
+    
 
 }

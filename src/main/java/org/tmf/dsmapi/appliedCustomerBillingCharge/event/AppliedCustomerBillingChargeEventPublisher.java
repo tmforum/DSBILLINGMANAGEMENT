@@ -58,7 +58,7 @@ public class AppliedCustomerBillingChargeEventPublisher implements AppliedCustom
         AppliedCustomerBillingChargeEvent event = new AppliedCustomerBillingChargeEvent();
         event.setEventTime(date);
         event.setEventType(AppliedCustomerBillingChargeEventTypeEnum.AppliedCustomerBillingChargeCreationNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
 
     }
@@ -68,7 +68,7 @@ public class AppliedCustomerBillingChargeEventPublisher implements AppliedCustom
         AppliedCustomerBillingChargeEvent event = new AppliedCustomerBillingChargeEvent();
         event.setEventTime(date);
         event.setEventType(AppliedCustomerBillingChargeEventTypeEnum.AppliedCustomerBillingChargeDeletionNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
     }
 	
@@ -77,7 +77,7 @@ public class AppliedCustomerBillingChargeEventPublisher implements AppliedCustom
         AppliedCustomerBillingChargeEvent event = new AppliedCustomerBillingChargeEvent();
         event.setEventTime(date);
         event.setEventType(AppliedCustomerBillingChargeEventTypeEnum.AppliedCustomerBillingChargeUpdateNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
     }
 
@@ -86,7 +86,7 @@ public class AppliedCustomerBillingChargeEventPublisher implements AppliedCustom
         AppliedCustomerBillingChargeEvent event = new AppliedCustomerBillingChargeEvent();
         event.setEventTime(date);
         event.setEventType(AppliedCustomerBillingChargeEventTypeEnum.AppliedCustomerBillingChargeValueChangeNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
     }
 }

@@ -23,24 +23,24 @@ public class StateModelImpl extends StateModelBase<BillingAccountState> {
     @Override
     protected void draw() {
         // First
-        from(BillingAccountState.DEFINED).to(
-                BillingAccountState.ACTIVE);
+        from(BillingAccountState.Defined).to(
+                BillingAccountState.Active);
 
         // Somewhere
-        from(BillingAccountState.ACTIVE).to(
-                BillingAccountState.SUSPENDED,
-                BillingAccountState.PENDING_CLOSED,
-                BillingAccountState.PENDING_UPDATE);       
-        from(BillingAccountState.SUSPENDED).to(
-                BillingAccountState.CLOSED,
-                BillingAccountState.ACTIVE);
-        from(BillingAccountState.PENDING_UPDATE).to(
-                BillingAccountState.ACTIVE);
-        from(BillingAccountState.PENDING_CLOSED).to(
-                BillingAccountState.CLOSED);
+        from(BillingAccountState.Active).to(
+                BillingAccountState.Suspended,
+                BillingAccountState.Pending_Closed,
+                BillingAccountState.Pending_Update);       
+        from(BillingAccountState.Suspended).to(
+                BillingAccountState.Closed,
+                BillingAccountState.Active);
+        from(BillingAccountState.Pending_Update).to(
+                BillingAccountState.Active);
+        from(BillingAccountState.Pending_Closed).to(
+                BillingAccountState.Closed);
 
         // Final
-        from(BillingAccountState.CLOSED);
+        from(BillingAccountState.Closed);
 //        from(State.REJECTED);
     }
 }

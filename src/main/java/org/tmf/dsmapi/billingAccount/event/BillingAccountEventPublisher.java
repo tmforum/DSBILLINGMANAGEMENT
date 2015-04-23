@@ -58,7 +58,7 @@ public class BillingAccountEventPublisher implements BillingAccountEventPublishe
         BillingAccountEvent event = new BillingAccountEvent();
         event.setEventTime(date);
         event.setEventType(BillingAccountEventTypeEnum.BillingAccountCreationNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
 
     }
@@ -68,7 +68,7 @@ public class BillingAccountEventPublisher implements BillingAccountEventPublishe
         BillingAccountEvent event = new BillingAccountEvent();
         event.setEventTime(date);
         event.setEventType(BillingAccountEventTypeEnum.BillingAccountDeletionNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
     }
 	
@@ -77,7 +77,7 @@ public class BillingAccountEventPublisher implements BillingAccountEventPublishe
         BillingAccountEvent event = new BillingAccountEvent();
         event.setEventTime(date);
         event.setEventType(BillingAccountEventTypeEnum.BillingAccountUpdateNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
     }
 
@@ -86,7 +86,7 @@ public class BillingAccountEventPublisher implements BillingAccountEventPublishe
         BillingAccountEvent event = new BillingAccountEvent();
         event.setEventTime(date);
         event.setEventType(BillingAccountEventTypeEnum.BillingAccountValueChangeNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
     }
 
@@ -95,7 +95,7 @@ public class BillingAccountEventPublisher implements BillingAccountEventPublishe
         BillingAccountEvent event = new BillingAccountEvent();
         event.setEventTime(date);
         event.setEventType(BillingAccountEventTypeEnum.BillingAccountStatusChangedNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
     }
 }

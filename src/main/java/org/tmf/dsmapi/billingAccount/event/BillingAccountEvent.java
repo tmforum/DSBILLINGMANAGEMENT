@@ -12,7 +12,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import static org.codehaus.jackson.annotate.JsonAutoDetect.Visibility.ANY;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.tmf.dsmapi.commons.utils.CustomJsonDateSerializer;
@@ -37,7 +40,7 @@ public class BillingAccountEvent implements Serializable {
     @Enumerated(value = EnumType.STRING)
     private BillingAccountEventTypeEnum eventType;
 
-    private BillingAccount event; //check for object
+    private BillingAccount resource; //check for object
 
     public String getId() {
         return id;
@@ -46,6 +49,26 @@ public class BillingAccountEvent implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+    
+      
+    @JsonAutoDetect(fieldVisibility = ANY)
+    class EventBody {
+        private BillingAccount billingAccount;
+        public BillingAccount getBillingAccount() {
+            return billingAccount;
+        }
+        public EventBody(BillingAccount billingAccount) { 
+        this.billingAccount = billingAccount;
+    }
+    
+       
+    }
+   @JsonProperty("event")
+   public EventBody getEvent() {
+       
+       return new EventBody(getResource() );
+   }
+    
 
     public Date getEventTime() {
         return eventTime;
@@ -63,17 +86,23 @@ public class BillingAccountEvent implements Serializable {
         this.eventType = eventType;
     }
 
-    public BillingAccount getEvent() {
-        return event;
+   @JsonIgnore
+    public BillingAccount getResource() {
+        
+        
+        return resource;
     }
 
-    public void setEvent(BillingAccount event) {
-        this.event = event;
+    public void setResource(BillingAccount resource) {
+        this.resource = resource;
     }
 
     @Override
     public String toString() {
-        return "BillingAccountEvent{" + "id=" + id + ", eventTime=" + eventTime + ", eventType=" + eventType + ", event=" + event + '}';
+        return "BillingAccountEvent{" + "id=" + id + ", eventTime=" + eventTime + ", eventType=" + eventType + ", resource=" + resource + '}';
     }
+
+
+   
 
 }

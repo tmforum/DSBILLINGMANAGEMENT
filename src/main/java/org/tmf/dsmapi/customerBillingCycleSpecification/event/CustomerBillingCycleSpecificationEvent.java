@@ -12,7 +12,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import static org.codehaus.jackson.annotate.JsonAutoDetect.Visibility.ANY;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.tmf.dsmapi.commons.utils.CustomJsonDateSerializer;
@@ -27,7 +30,7 @@ public class CustomerBillingCycleSpecificationEvent implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @JsonIgnore
+    @JsonIgnore
     private String id;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -37,8 +40,9 @@ public class CustomerBillingCycleSpecificationEvent implements Serializable {
     @Enumerated(value = EnumType.STRING)
     private CustomerBillingCycleSpecificationEventTypeEnum eventType;
 
-    private CustomerBillingCycleSpecification event; //check for object
+    private CustomerBillingCycleSpecification resource; //check for object
 
+     @JsonIgnore
     public String getId() {
         return id;
     }
@@ -46,6 +50,26 @@ public class CustomerBillingCycleSpecificationEvent implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+    
+    
+      
+    @JsonAutoDetect(fieldVisibility = ANY)
+    class EventBody {
+        private CustomerBillingCycleSpecification customerBillingCycleSpecification;
+        public CustomerBillingCycleSpecification getCustomerBillingCycleSpecification() {
+            return customerBillingCycleSpecification;
+        }
+        public EventBody(CustomerBillingCycleSpecification customerBillingCycleSpecification) { 
+        this.customerBillingCycleSpecification = customerBillingCycleSpecification;
+    }
+    
+       
+    }
+   @JsonProperty("event")
+   public EventBody getEvent() {
+       
+       return new EventBody(getResource() );
+   }
 
     public Date getEventTime() {
         return eventTime;
@@ -63,17 +87,23 @@ public class CustomerBillingCycleSpecificationEvent implements Serializable {
         this.eventType = eventType;
     }
 
-    public CustomerBillingCycleSpecification getEvent() {
-        return event;
+    @JsonIgnore
+    public CustomerBillingCycleSpecification getResource() {
+        
+        
+        return resource;
     }
 
-    public void setEvent(CustomerBillingCycleSpecification event) {
-        this.event = event;
+    public void setResource(CustomerBillingCycleSpecification resource) {
+        this.resource = resource;
     }
 
     @Override
     public String toString() {
-        return "CustomerBillingCycleSpecificationEvent{" + "id=" + id + ", eventTime=" + eventTime + ", eventType=" + eventType + ", event=" + event + '}';
+        return "CustomerBillingCycleSpecificationEvent{" + "id=" + id + ", eventTime=" + eventTime + ", eventType=" + eventType + ", resource=" + resource + '}';
     }
+
+
+    
 
 }

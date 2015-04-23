@@ -82,8 +82,8 @@ public class BillingAccountFacade extends AbstractFacade<BillingAccount> {
 
     public void verifyFirstStatus(BillingAccountState newState) throws BadUsageException {
         
-        if ( ! newState.name().equalsIgnoreCase(BillingAccountState.DEFINED.name())) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_FLOW_TRANSITION, "state " + newState.value() +" is not the first state, attempt : "+BillingAccountState.DEFINED.value());
+        if ( ! newState.name().equalsIgnoreCase(BillingAccountState.Defined.name())) {
+            throw new BadUsageException(ExceptionType.BAD_USAGE_FLOW_TRANSITION, "state " + newState.value() +" is not the first state, attempt : "+BillingAccountState.Defined.value());
         }
     }
 

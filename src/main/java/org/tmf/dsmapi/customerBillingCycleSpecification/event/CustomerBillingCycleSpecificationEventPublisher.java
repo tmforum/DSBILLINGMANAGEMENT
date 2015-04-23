@@ -58,7 +58,7 @@ public class CustomerBillingCycleSpecificationEventPublisher implements Customer
         CustomerBillingCycleSpecificationEvent event = new CustomerBillingCycleSpecificationEvent();
         event.setEventTime(date);
         event.setEventType(CustomerBillingCycleSpecificationEventTypeEnum.CustomerBillingCycleSpecificationCreationNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
 
     }
@@ -68,7 +68,7 @@ public class CustomerBillingCycleSpecificationEventPublisher implements Customer
         CustomerBillingCycleSpecificationEvent event = new CustomerBillingCycleSpecificationEvent();
         event.setEventTime(date);
         event.setEventType(CustomerBillingCycleSpecificationEventTypeEnum.CustomerBillingCycleSpecificationDeletionNotification);
-        event.setEvent(bean);
+       event.setResource(bean);
         publish(event);
     }
 	
@@ -77,7 +77,7 @@ public class CustomerBillingCycleSpecificationEventPublisher implements Customer
         CustomerBillingCycleSpecificationEvent event = new CustomerBillingCycleSpecificationEvent();
         event.setEventTime(date);
         event.setEventType(CustomerBillingCycleSpecificationEventTypeEnum.CustomerBillingCycleSpecificationUpdateNotification);
-        event.setEvent(bean);
+       event.setResource(bean);
         publish(event);
     }
 
@@ -86,7 +86,7 @@ public class CustomerBillingCycleSpecificationEventPublisher implements Customer
         CustomerBillingCycleSpecificationEvent event = new CustomerBillingCycleSpecificationEvent();
         event.setEventTime(date);
         event.setEventType(CustomerBillingCycleSpecificationEventTypeEnum.CustomerBillingCycleSpecificationValueChangeNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
     }
 }

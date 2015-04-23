@@ -58,7 +58,7 @@ public class CustomerBillFormatEventPublisher implements CustomerBillFormatEvent
         CustomerBillFormatEvent event = new CustomerBillFormatEvent();
         event.setEventTime(date);
         event.setEventType(CustomerBillFormatEventTypeEnum.CustomerBillFormatCreationNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
 
     }
@@ -68,7 +68,7 @@ public class CustomerBillFormatEventPublisher implements CustomerBillFormatEvent
         CustomerBillFormatEvent event = new CustomerBillFormatEvent();
         event.setEventTime(date);
         event.setEventType(CustomerBillFormatEventTypeEnum.CustomerBillFormatDeletionNotification);
-        event.setEvent(bean);
+      event.setResource(bean);
         publish(event);
     }
 	
@@ -77,7 +77,7 @@ public class CustomerBillFormatEventPublisher implements CustomerBillFormatEvent
         CustomerBillFormatEvent event = new CustomerBillFormatEvent();
         event.setEventTime(date);
         event.setEventType(CustomerBillFormatEventTypeEnum.CustomerBillFormatUpdateNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
     }
 
@@ -86,7 +86,7 @@ public class CustomerBillFormatEventPublisher implements CustomerBillFormatEvent
         CustomerBillFormatEvent event = new CustomerBillFormatEvent();
         event.setEventTime(date);
         event.setEventType(CustomerBillFormatEventTypeEnum.CustomerBillFormatValueChangeNotification);
-        event.setEvent(bean);
+        event.setResource(bean);
         publish(event);
     }
 }
