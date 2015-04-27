@@ -1,5 +1,7 @@
 package org.tmf.dsmapi.billingAccount;
 
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +23,16 @@ import org.tmf.dsmapi.billingAccount.model.BillingAccount;
 import org.tmf.dsmapi.billingAccount.event.BillingAccountEvent;
 import org.tmf.dsmapi.billingAccount.event.BillingAccountEventFacade;
 import org.tmf.dsmapi.billingAccount.event.BillingAccountEventPublisherLocal;
+import org.tmf.dsmapi.billingAccount.model.BillingAccountBalance;
+import org.tmf.dsmapi.billingAccount.model.BillingAccountState;
+import org.tmf.dsmapi.billingAccount.model.Currency;
+import org.tmf.dsmapi.billingAccount.model.CustomerAccount;
+import org.tmf.dsmapi.billingAccount.model.CustomerBillFormat;
+import org.tmf.dsmapi.billingAccount.model.CustomerBillPresentationMedia;
+import org.tmf.dsmapi.billingAccount.model.CustomerBillingCycleSpecification;
+import org.tmf.dsmapi.billingAccount.model.PaymentMean;
+import org.tmf.dsmapi.billingAccount.model.RelatedParty;
+import org.tmf.dsmapi.billingAccount.model.TimePeriod;
 
 @Stateless
 @Path("admin/billingAccount")
@@ -220,4 +232,87 @@ public class BillingAccountAdminResource {
     public Report count() {
         return new Report(billingAccountFacade.count());
     }
+
+    @GET
+    @Produces({"application/json"})
+    @Path("proto")
+    public BillingAccount proto() {
+        BillingAccount billingAccount = new BillingAccount();
+        billingAccount.setId(new Long(1));
+        billingAccount.setHref("href/1");
+        billingAccount.setRatingType("postpaid");
+        billingAccount.setName("my personal Billing Account");
+        billingAccount.setState(BillingAccountState.Active);
+        TimePeriod timePeriod = new TimePeriod();
+        GregorianCalendar gc = new GregorianCalendar();
+        gc.set(2014, 05, 15);
+        timePeriod.setStartPeriod(gc.getTime());
+        billingAccount.setValidFor(timePeriod);
+        
+        CustomerAccount customerAccount = new CustomerAccount();
+        customerAccount.setId("15");
+        customerAccount.setHref("http://serverlocation:port/customerManagement/customerAccount/15");
+        customerAccount.setName("Customer Account xxx");
+        billingAccount.setCustomerAccount(customerAccount);
+        
+        CustomerBillingCycleSpecification cbCycleSpecif = new CustomerBillingCycleSpecification();
+        cbCycleSpecif.setHref("http://server:port/billingManagement/customerbillingCycleSpecification/26");
+        cbCycleSpecif.setFrequency("monthly");
+        cbCycleSpecif.setBillingDateShift(new Integer(15));
+        cbCycleSpecif.setName("Monthly billing on the 15");
+        billingAccount.setCustomerBillingCycleSpecification(cbCycleSpecif);
+        
+        CustomerBillFormat customerBillFormat = new CustomerBillFormat();
+        customerBillFormat.setId(new Long(23));
+        customerBillFormat.setHref("http://serverlocation:port/billingManagement/customerBillFormat/23");
+        customerBillFormat.setName("Detailed invoice");
+        billingAccount.setCustomerBillFormat(customerBillFormat);
+        
+        CustomerBillPresentationMedia cbPresentationMedia = new CustomerBillPresentationMedia();
+        cbPresentationMedia.setId(new Long(25));
+        cbPresentationMedia.setHref("http://serverlocation:port/billingManagement/customerBillPresentationMedia/25");
+        cbPresentationMedia.setName("Electronic invoice");
+        
+        Currency currency = new Currency();
+        currency.setCurrencyCode("EUR");
+        billingAccount.setCurrency(currency);
+        
+        List<BillingAccountBalance> billingAccountBalances = new ArrayList<BillingAccountBalance>();
+        BillingAccountBalance baBalance = new BillingAccountBalance();
+        baBalance.setType("ReceivableBalance");
+        baBalance.setAmount(new Float("52.3"));
+        baBalance.setStatus("Due");
+        timePeriod = new TimePeriod();
+        gc.set(2014, 05, 15);
+        timePeriod.setStartPeriod(gc.getTime());
+        gc.set(2099, 01, 01);
+        timePeriod.setEndPeriod(gc.getTime());
+        baBalance.setValidFor(timePeriod);
+        billingAccountBalances.add(baBalance);
+        billingAccount.setBillingAccountBalance(billingAccountBalances);
+        
+        List<RelatedParty> relatedParties = new ArrayList<RelatedParty>();
+        RelatedParty relatedParty = new RelatedParty();
+        relatedParty.setId("1");
+        relatedParty.setHref("http://serverlocation:port/partyManagement/partyRole/1");
+        relatedParty.setRole("bill receiver");
+        relatedParties.add(relatedParty);
+        
+        relatedParty = new RelatedParty();
+        relatedParty.setId("5");
+        relatedParty.setHref("http://serverlocation:port/partyManagement/partyRole/5");
+        relatedParty.setRole("bill responsible");
+        relatedParties.add(relatedParty);
+        
+        billingAccount.setRelatedParty(relatedParties);
+        
+        PaymentMean paymentMean = new PaymentMean();
+        paymentMean.setId("45");
+        paymentMean.setHref("http://serverlocation:port/customerManagement/paymentMean/45");
+        paymentMean.setName("my favourite payment mean");
+        billingAccount.setPaymentMean(paymentMean);
+    
+        return billingAccount;
+    }
+
 }

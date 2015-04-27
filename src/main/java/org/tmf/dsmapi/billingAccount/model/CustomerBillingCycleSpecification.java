@@ -11,6 +11,7 @@ package org.tmf.dsmapi.billingAccount.model;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -59,6 +60,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @Entity(name = "CustomerBillingCycleSpecif")
 @Table(name = "CUSTOMER_BILLING_CYCLE_SPECI_0")
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(length = 127)
 public class CustomerBillingCycleSpecification
     implements Serializable
 {
