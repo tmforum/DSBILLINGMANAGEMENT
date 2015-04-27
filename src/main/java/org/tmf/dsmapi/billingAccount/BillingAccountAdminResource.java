@@ -1,6 +1,5 @@
 package org.tmf.dsmapi.billingAccount;
 
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +18,6 @@ import org.tmf.dsmapi.commons.exceptions.BadUsageException;
 import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
 import org.tmf.dsmapi.commons.jaxrs.Report;
 import org.tmf.dsmapi.billingAccount.model.BillingAccount;
-import org.tmf.dsmapi.billingAccount.BillingAccountFacade;
 import org.tmf.dsmapi.billingAccount.event.BillingAccountEvent;
 import org.tmf.dsmapi.billingAccount.event.BillingAccountEventFacade;
 import org.tmf.dsmapi.billingAccount.event.BillingAccountEventPublisherLocal;
@@ -44,6 +42,7 @@ public class BillingAccountAdminResource {
     /**
      *
      * For test purpose only
+     *
      * @param entities
      * @return
      */
@@ -62,9 +61,6 @@ public class BillingAccountAdminResource {
         // Try to persist entities
         try {
             affectedRows = billingAccountFacade.create(entities);
-            for (BillingAccount entitie : entities) {
-                publisher.createNotification(entitie, new Date());
-            }
         } catch (BadUsageException e) {
             return Response.status(Response.Status.BAD_REQUEST.getStatusCode()).build();
         }
@@ -89,7 +85,6 @@ public class BillingAccountAdminResource {
         if (billingAccount != null) {
             entity.setId(id);
             billingAccountFacade.edit(entity);
-            publisher.valueChangedNotification(entity, new Date());
             // 201 OK + location
             response = Response.status(Response.Status.CREATED).entity(entity).build();
 
@@ -103,6 +98,7 @@ public class BillingAccountAdminResource {
     /**
      *
      * For test purpose only
+     *
      * @return
      * @throws org.tmf.dsmapi.commons.exceptions.UnknownResourceException
      */
@@ -130,6 +126,7 @@ public class BillingAccountAdminResource {
     /**
      *
      * For test purpose only
+     *
      * @param id
      * @return
      * @throws UnknownResourceException
@@ -137,41 +134,33 @@ public class BillingAccountAdminResource {
     @DELETE
     @Path("{id}")
     public Response delete(@PathParam("id") Long id) throws UnknownResourceException {
-//        try {
-            int previousRows = billingAccountFacade.count();
-            BillingAccount entity = billingAccountFacade.find(id);
+        int previousRows = billingAccountFacade.count();
+        BillingAccount entity = billingAccountFacade.find(id);
 
-            // Event deletion
-            publisher.deletionNotification(entity, new Date());
-            try {
-                //Pause for 4 seconds to finish notification
-                Thread.sleep(4000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(BillingAccountAdminResource.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            //Pause for 4 seconds to finish notification
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(BillingAccountAdminResource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // remove event(s) binding to the resource
+        List<BillingAccountEvent> events = eventFacade.findAll();
+        for (BillingAccountEvent event : events) {
+            if (event.getResource().getId().equals(id)) {
+                eventFacade.remove(event.getId());
             }
-            // remove event(s) binding to the resource
-            List<BillingAccountEvent> events = eventFacade.findAll();
-            for (BillingAccountEvent event : events) {
-                if (event.getResource().getId().equals(id)) {
-                    eventFacade.remove(event.getId());
-                }
-            }
-            //remove resource
-            billingAccountFacade.remove(id);
+        }
+        //remove resource
+        billingAccountFacade.remove(id);
 
-            int affectedRows = 1;
-            Report stat = new Report(billingAccountFacade.count());
-            stat.setAffectedRows(affectedRows);
-            stat.setPreviousRows(previousRows);
+        int affectedRows = 1;
+        Report stat = new Report(billingAccountFacade.count());
+        stat.setAffectedRows(affectedRows);
+        stat.setPreviousRows(previousRows);
 
-            // 200 
-            Response response = Response.ok(stat).build();
-            return response;
-//        } catch (UnknownResourceException ex) {
-//            Logger.getLogger(BillingAccountAdminResource.class.getName()).log(Level.SEVERE, null, ex);
-//            Response response = Response.status(Response.Status.NOT_FOUND).build();
-//            return response;
-//        }
+        // 200 
+        Response response = Response.ok(stat).build();
+        return response;
     }
 
     @GET

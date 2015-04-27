@@ -53,39 +53,12 @@ public class BillingAccountEventPublisher implements BillingAccountEventPublishe
         }
     }
 
-    @Override
-    public void createNotification(BillingAccount bean, Date date) {
-        BillingAccountEvent event = new BillingAccountEvent();
-        event.setEventTime(date);
-        event.setEventType(BillingAccountEventTypeEnum.BillingAccountCreationNotification);
-        event.setResource(bean);
-        publish(event);
-
-    }
 
     @Override
-    public void deletionNotification(BillingAccount bean, Date date) {
+    public void settlementNoteAdviceNotification(BillingAccount bean, Date date) {
         BillingAccountEvent event = new BillingAccountEvent();
         event.setEventTime(date);
-        event.setEventType(BillingAccountEventTypeEnum.BillingAccountDeletionNotification);
-        event.setResource(bean);
-        publish(event);
-    }
-	
-    @Override
-    public void updateNotification(BillingAccount bean, Date date) {
-        BillingAccountEvent event = new BillingAccountEvent();
-        event.setEventTime(date);
-        event.setEventType(BillingAccountEventTypeEnum.BillingAccountUpdateNotification);
-        event.setResource(bean);
-        publish(event);
-    }
-
-    @Override
-    public void valueChangedNotification(BillingAccount bean, Date date) {
-        BillingAccountEvent event = new BillingAccountEvent();
-        event.setEventTime(date);
-        event.setEventType(BillingAccountEventTypeEnum.BillingAccountValueChangeNotification);
+        event.setEventType(BillingAccountEventTypeEnum.SettlementNoteAdviceNotification);
         event.setResource(bean);
         publish(event);
     }
@@ -94,7 +67,7 @@ public class BillingAccountEventPublisher implements BillingAccountEventPublishe
     public void statusChangedNotification(BillingAccount bean, Date date) {
         BillingAccountEvent event = new BillingAccountEvent();
         event.setEventTime(date);
-        event.setEventType(BillingAccountEventTypeEnum.BillingAccountStatusChangedNotification);
+        event.setEventType(BillingAccountEventTypeEnum.BillingAccountStateChangedNotification);
         event.setResource(bean);
         publish(event);
     }

@@ -1,6 +1,8 @@
 package org.tmf.dsmapi.billingAccount;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.tmf.dsmapi.commons.facade.AbstractFacade;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -13,9 +15,9 @@ import org.tmf.dsmapi.commons.exceptions.ExceptionType;
 import org.tmf.dsmapi.billingAccount.model.BillingAccount;
 import org.tmf.dsmapi.billingAccount.event.BillingAccountEventPublisherLocal;
 import org.tmf.dsmapi.billingAccount.model.BillingAccountState;
+import org.tmf.dsmapi.billingAccount.model.RelatedParty;
 import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
 import org.tmf.dsmapi.commons.utils.BeanUtils;
-import org.tmf.dsmapi.commons.workflow.Transition;
 
 @Stateless
 public class BillingAccountFacade extends AbstractFacade<BillingAccount> {
@@ -51,40 +53,72 @@ public class BillingAccountFacade extends AbstractFacade<BillingAccount> {
             throw new UnknownResourceException(ExceptionType.UNKNOWN_RESOURCE);
         }
 
-//        if (BeanUtils.verify(partialBillingAccount, node, "state")) {
-//            stateModel.checkTransition(currentBillingAccount.getState(), partialBillingAccount.getState());
-//            publisher.statusChangedNotification(currentBillingAccount, new Date());
-//        } else {
-//            throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "state" + " is not found");
-//        }
         verifyStatus(currentBillingAccount, partialBillingAccount);
-        
+
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.convertValue(partialBillingAccount, JsonNode.class);
         partialBillingAccount.setId(id);
-        if (BeanUtils.patch(currentBillingAccount, partialBillingAccount, node)) {
-            publisher.valueChangedNotification(currentBillingAccount, new Date());
+
+        List<String> updateNodesName = new ArrayList<>();
+        updateNodesName = BeanUtils.getNodesName(node, partialBillingAccount, "ba", updateNodesName);
+
+        if (updateNodesName.contains("ba.ratingType")) {
+            throw new BadUsageException(ExceptionType.BAD_USAGE_OPERATOR, "ratingType is not modifiable");
         }
+
+        if (updateNodesName.contains("ba.billingAccountBalance")) {
+            throw new BadUsageException(ExceptionType.BAD_USAGE_OPERATOR, "billingAccountBalance is not modifiable");
+        }
+
+        BeanUtils.patch(currentBillingAccount, partialBillingAccount, node);
 
         return currentBillingAccount;
     }
-    
+
     public void verifyStatus(BillingAccount currentBillingAccount, BillingAccount partialBillingAccount) throws BadUsageException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.convertValue(partialBillingAccount, JsonNode.class);
-        if (BeanUtils.verify(partialBillingAccount, node, "state")) {
+        List<String> updateNodesName = new ArrayList<>();
+        updateNodesName = BeanUtils.getNodesName(node, partialBillingAccount, "billingAccount", updateNodesName);
+        if (updateNodesName.contains("billingAccount.state")) {
             stateModel.checkTransition(currentBillingAccount.getState(), partialBillingAccount.getState());
             publisher.statusChangedNotification(currentBillingAccount, new Date());
-//        } else {
-//            throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "state" + " is not found");
         }
+
     }
 
-    public void verifyFirstStatus(BillingAccountState newState) throws BadUsageException {
-        
-        if ( ! newState.name().equalsIgnoreCase(BillingAccountState.Defined.name())) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_FLOW_TRANSITION, "state " + newState.value() +" is not the first state, attempt : "+BillingAccountState.Defined.value());
+    public void checkCreation(BillingAccount newBillingAccount) throws BadUsageException {
+        //verify first status
+        if (!newBillingAccount.getState().name().equalsIgnoreCase(BillingAccountState.Defined.name())) {
+            throw new BadUsageException(ExceptionType.BAD_USAGE_FLOW_TRANSITION, "state " + newBillingAccount.getState().value() + " is not the first state, attempt : " + BillingAccountState.Defined.value());
         }
-    }
 
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode node = mapper.convertValue(newBillingAccount, JsonNode.class);
+        List<String> updateNodesName = new ArrayList<>();
+        updateNodesName = BeanUtils.getNodesName(node, newBillingAccount, "ba", updateNodesName);
+
+        if (!updateNodesName.contains("ba.customerAccount.id")) {
+            throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "customerAccount.id is mandatory");
+        }
+
+        if (updateNodesName.contains("ba.relatedParty")) {
+            List<RelatedParty> l_relatedParty = newBillingAccount.getRelatedParty();
+            boolean findRole = false;
+            for (RelatedParty party : l_relatedParty) {
+                if (null == party.getId()) {
+                    throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "relatedParty.id is mandatory");
+                }
+                if (null != party.getRole()) {
+                    if (party.getRole().equalsIgnoreCase("bill receiver")) {
+                        findRole = true;
+                    }
+                }
+            }
+            if (!findRole) {
+                throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "a role 'bill receiver' is mandatory");
+            }
+        }
+
+    }
 }

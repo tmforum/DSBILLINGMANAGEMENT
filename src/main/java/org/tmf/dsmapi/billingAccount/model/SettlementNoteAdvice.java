@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.tmf.dsmapi.commons.utils.CustomDateTimeAdapter;
+import org.tmf.dsmapi.commons.utils.CustomJsonDateSerializer;
 
 
 /**
@@ -100,16 +100,16 @@ public class SettlementNoteAdvice
     protected Long id;
     protected String href;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(CustomDateTimeAdapter.class)
+    @JsonSerialize(using = CustomJsonDateSerializer.class)
     @XmlSchemaType(name = "dateTime")
     protected Date date;
     protected String description;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(CustomDateTimeAdapter.class)
+    @JsonSerialize(using = CustomJsonDateSerializer.class)
     @XmlSchemaType(name = "dateTime")
     protected Date paymentDueDate;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(CustomDateTimeAdapter.class)
+    @JsonSerialize(using = CustomJsonDateSerializer.class)
     @XmlSchemaType(name = "dateTime")
     protected Date taxDate;
     protected String currencyCode;

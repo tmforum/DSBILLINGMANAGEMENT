@@ -2,11 +2,8 @@ package org.tmf.dsmapi.billingAccount.event;
 
 public enum BillingAccountEventTypeEnum {
 
-    BillingAccountCreationNotification("BillingAccountCreationNotification"),
-    BillingAccountUpdateNotification("BillingAccountUpdateNotification"),
-    BillingAccountDeletionNotification("BillingAccountDeletionNotification"),
-    BillingAccountValueChangeNotification("BillingAccountValueChangeNotification"),
-    BillingAccountStatusChangedNotification("BillingAccountStatusChangedNotification");
+    SettlementNoteAdviceNotification("SettlementNoteAdviceNotification"),
+    BillingAccountStateChangedNotification("BillingAccountStateChangedNotification");
     
     private String text;
 

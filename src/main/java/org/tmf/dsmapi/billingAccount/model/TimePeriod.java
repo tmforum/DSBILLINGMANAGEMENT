@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.tmf.dsmapi.commons.utils.CustomDateTimeAdapter;
+import org.tmf.dsmapi.commons.utils.CustomJsonDateSerializer;
 
 
 /**
@@ -42,8 +42,8 @@ import org.tmf.dsmapi.commons.utils.CustomDateTimeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="startDateTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="endDateTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="startPeriod" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="endPeriod" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -54,8 +54,8 @@ import org.tmf.dsmapi.commons.utils.CustomDateTimeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TimePeriod", propOrder = {
-    "startDateTime",
-    "endDateTime"
+    "startPeriod",
+    "endPeriod"
 })
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @Entity(name = "TimePeriod")
@@ -67,18 +67,18 @@ public class TimePeriod
 
     private final static long serialVersionUID = 11L;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(CustomDateTimeAdapter.class)
+    @JsonSerialize(using = CustomJsonDateSerializer.class)
     @XmlSchemaType(name = "dateTime")
-    protected Date startDateTime;
+    protected Date startPeriod;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(CustomDateTimeAdapter.class)
+    @JsonSerialize(using = CustomJsonDateSerializer.class)
     @XmlSchemaType(name = "dateTime")
-    protected Date endDateTime;
+    protected Date endPeriod;
     @XmlAttribute(name = "Hjid")
     protected Long hjid;
 
     /**
-     * Obtient la valeur de la propriété startDateTime.
+     * Obtient la valeur de la propriété startPeriod.
      * 
      * @return
      *     possible object is
@@ -86,26 +86,26 @@ public class TimePeriod
      *     
      */
     @Basic
-    @Column(name = "START_DATE_TIME")
+    @Column(name = "START_PERIOD")
     @Temporal(TemporalType.TIMESTAMP)
-    public Date getStartDateTime() {
-        return startDateTime;
+    public Date getStartPeriod() {
+        return startPeriod;
     }
 
     /**
-     * Définit la valeur de la propriété startDateTime.
+     * Définit la valeur de la propriété startPeriod.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setStartDateTime(Date value) {
-        this.startDateTime = value;
+    public void setStartPeriod(Date value) {
+        this.startPeriod = value;
     }
 
     /**
-     * Obtient la valeur de la propriété endDateTime.
+     * Obtient la valeur de la propriété endPeriod.
      * 
      * @return
      *     possible object is
@@ -113,22 +113,22 @@ public class TimePeriod
      *     
      */
     @Basic
-    @Column(name = "END_DATE_TIME")
+    @Column(name = "END_PERIOD")
     @Temporal(TemporalType.TIMESTAMP)
-    public Date getEndDateTime() {
-        return endDateTime;
+    public Date getEndPeriod() {
+        return endPeriod;
     }
 
     /**
-     * Définit la valeur de la propriété endDateTime.
+     * Définit la valeur de la propriété endPeriod.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setEndDateTime(Date value) {
-        this.endDateTime = value;
+    public void setEndPeriod(Date value) {
+        this.endPeriod = value;
     }
 
     /**

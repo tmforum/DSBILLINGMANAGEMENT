@@ -80,6 +80,9 @@ public class SettlementNoteItem
     protected String itemLabel;
     protected String quantity;
     protected List<TaxItem> taxItem;
+    protected Float taxExcludedUnitPrice;
+    protected Float taxExcludedAmount;
+    protected Float taxIncludedAmount;
     protected TimePeriod period;
     protected ProductSpecification productSpecification;
     @XmlAttribute(name = "Hjid")
@@ -312,6 +315,36 @@ public class SettlementNoteItem
      */
     public void setHjid(Long value) {
         this.hjid = value;
+    }
+
+    @Basic
+    @Column(name = "TAX_EXCLUDED_UNITPRICE", precision = 20, scale = 10)
+    public Float getTaxExcludedUnitPrice() {
+        return taxExcludedUnitPrice;
+    }
+
+    public void setTaxExcludedUnitPrice(Float taxExcludedUnitPrice) {
+        this.taxExcludedUnitPrice = taxExcludedUnitPrice;
+    }
+
+    @Basic
+    @Column(name = "TAX_EXCLUDED_AMOUNT", precision = 20, scale = 10)
+    public Float getTaxExcludedAmount() {
+        return taxExcludedAmount;
+    }
+
+    public void setTaxExcludedAmount(Float taxExcludedAmount) {
+        this.taxExcludedAmount = taxExcludedAmount;
+    }
+
+    @Basic
+    @Column(name = "TAX_INCLUDED_AMOUNT", precision = 20, scale = 10)
+    public Float getTaxIncludedAmount() {
+        return taxIncludedAmount;
+    }
+
+    public void setTaxIncludedAmount(Float taxIncludedAmount) {
+        this.taxIncludedAmount = taxIncludedAmount;
     }
 
 }

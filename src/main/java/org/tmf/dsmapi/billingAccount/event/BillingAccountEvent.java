@@ -42,6 +42,7 @@ public class BillingAccountEvent implements Serializable {
 
     private BillingAccount resource; //check for object
 
+   @JsonProperty("eventId")
     public String getId() {
         return id;
     }
