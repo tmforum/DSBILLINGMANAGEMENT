@@ -55,21 +55,19 @@ public class BillingAccountFacade extends AbstractFacade<BillingAccount> {
 
         verifyStatus(currentBillingAccount, partialBillingAccount);
 
+        if (null != partialBillingAccount.getRatingType()) {
+            throw new BadUsageException(ExceptionType.BAD_USAGE_OPERATOR, 
+                    "ratingType is not modifiable");
+        }
+
+        if (null != partialBillingAccount.getBillingAccountBalance()) {
+            throw new BadUsageException(ExceptionType.BAD_USAGE_OPERATOR, 
+                    "billingAccountBalance is not modifiable");
+        }
+
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.convertValue(partialBillingAccount, JsonNode.class);
         partialBillingAccount.setId(id);
-
-        List<String> updateNodesName = new ArrayList<>();
-        updateNodesName = BeanUtils.getNodesName(node, partialBillingAccount, "ba", updateNodesName);
-
-        if (updateNodesName.contains("ba.ratingType")) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_OPERATOR, "ratingType is not modifiable");
-        }
-
-        if (updateNodesName.contains("ba.billingAccountBalance")) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_OPERATOR, "billingAccountBalance is not modifiable");
-        }
-
         BeanUtils.patch(currentBillingAccount, partialBillingAccount, node);
 
         return currentBillingAccount;
@@ -93,16 +91,11 @@ public class BillingAccountFacade extends AbstractFacade<BillingAccount> {
             throw new BadUsageException(ExceptionType.BAD_USAGE_FLOW_TRANSITION, "state " + newBillingAccount.getState().value() + " is not the first state, attempt : " + BillingAccountState.Defined.value());
         }
 
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode node = mapper.convertValue(newBillingAccount, JsonNode.class);
-        List<String> updateNodesName = new ArrayList<>();
-        updateNodesName = BeanUtils.getNodesName(node, newBillingAccount, "ba", updateNodesName);
-
-        if (!updateNodesName.contains("ba.customerAccount.id")) {
+        if (null == newBillingAccount.getId()) {
             throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "customerAccount.id is mandatory");
         }
 
-        if (updateNodesName.contains("ba.relatedParty")) {
+        if (null != newBillingAccount.getRelatedParty()) {
             List<RelatedParty> l_relatedParty = newBillingAccount.getRelatedParty();
             boolean findRole = false;
             for (RelatedParty party : l_relatedParty) {
