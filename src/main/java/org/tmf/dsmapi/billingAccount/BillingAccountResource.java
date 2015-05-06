@@ -47,7 +47,7 @@ public class BillingAccountResource {
     public Response create(BillingAccount entity) throws BadUsageException, UnknownResourceException {
         billingAccountFacade.checkCreation(entity);
         billingAccountFacade.create(entity);
-        entity.setHref("href/".concat(Long.toString(entity.getId())));
+        entity.setHref("http://serverLocalisation:port/DSBillingManagement/api/billingManagement/v2/billingAccount/".concat(Long.toString(entity.getId())));
         billingAccountFacade.edit(entity);
         // 201
         Response response = Response.status(Response.Status.CREATED).entity(entity).build();

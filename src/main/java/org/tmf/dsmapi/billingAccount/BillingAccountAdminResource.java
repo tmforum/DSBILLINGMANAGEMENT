@@ -239,7 +239,7 @@ public class BillingAccountAdminResource {
     public BillingAccount proto() {
         BillingAccount billingAccount = new BillingAccount();
         billingAccount.setId(new Long(1));
-        billingAccount.setHref("href/1");
+        billingAccount.setHref("http://serverLocalisation:port/DSBillingManagement/api/billingManagement/v2/billingAccount/1");
         billingAccount.setRatingType("postpaid");
         billingAccount.setName("my personal Billing Account");
         billingAccount.setState(BillingAccountState.Active);
