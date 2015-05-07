@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 
 /**
@@ -61,7 +62,7 @@ public class AppliedCustomerBillingTaxRate
     private final static long serialVersionUID = 11L;
     protected Float amount;
     protected String taxCategory;
-    @XmlAttribute(name = "Hjid")
+    @JsonIgnore
     protected Long hjid;
 
     /**

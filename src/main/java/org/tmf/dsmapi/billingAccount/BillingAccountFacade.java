@@ -2,6 +2,7 @@ package org.tmf.dsmapi.billingAccount;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import org.tmf.dsmapi.commons.facade.AbstractFacade;
 import javax.ejb.EJB;
@@ -16,6 +17,7 @@ import org.tmf.dsmapi.billingAccount.model.BillingAccount;
 import org.tmf.dsmapi.billingAccount.event.BillingAccountEventPublisherLocal;
 import org.tmf.dsmapi.billingAccount.model.BillingAccountState;
 import org.tmf.dsmapi.billingAccount.model.RelatedParty;
+import org.tmf.dsmapi.billingAccount.model.TimePeriod;
 import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
 import org.tmf.dsmapi.commons.utils.BeanUtils;
 
@@ -90,9 +92,25 @@ public class BillingAccountFacade extends AbstractFacade<BillingAccount> {
         if (!newBillingAccount.getState().name().equalsIgnoreCase(BillingAccountState.Defined.name())) {
             throw new BadUsageException(ExceptionType.BAD_USAGE_FLOW_TRANSITION, "state " + newBillingAccount.getState().value() + " is not the first state, attempt : " + BillingAccountState.Defined.value());
         }
+        if( null == newBillingAccount.getRatingType() ){
+            newBillingAccount.setRatingType("Postpaid");
+        }
+        if (null == newBillingAccount.getName()){
+            newBillingAccount.setName("Customer Name");
+        }
+        if (null == newBillingAccount.getValidFor()){
+            GregorianCalendar gc = new GregorianCalendar();
+            gc.setTime(new Date());
+            TimePeriod timePeriod = new TimePeriod();
+            timePeriod.setStartPeriod(gc.getTime());
+            gc.add(GregorianCalendar.DATE, 7);
+            timePeriod.setEndPeriod(gc.getTime());
+            newBillingAccount.setValidFor(timePeriod);
+        }
 
-        if (null == newBillingAccount.getId()) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "customerAccount.id is mandatory");
+        if (null != newBillingAccount.getCustomerAccount()) {
+            if(null == newBillingAccount.getCustomerAccount().getId())
+                throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "customerAccount.id is mandatory");
         }
 
         if (null != newBillingAccount.getRelatedParty()) {
