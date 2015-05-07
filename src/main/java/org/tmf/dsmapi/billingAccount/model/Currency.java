@@ -58,7 +58,8 @@ public class Currency
 
     private final static long serialVersionUID = 11L;
     protected String currencyCode;
-    @XmlAttribute(name = "Hjid")
+    
+    @org.codehaus.jackson.annotate.JsonIgnore
     protected Long hjid;
 
     /**

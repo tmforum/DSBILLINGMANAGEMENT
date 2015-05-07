@@ -64,7 +64,7 @@ public class TaxItem
     protected String taxCategory;
     protected Float taxRate;
     protected Float taxAmount;
-    @XmlAttribute(name = "Hjid")
+    @org.codehaus.jackson.annotate.JsonIgnore
     protected Long hjid;
 
     /**

@@ -61,7 +61,7 @@ public class SettlementMethod
     private final static long serialVersionUID = 11L;
     protected String code;
     protected String label;
-    @XmlAttribute(name = "Hjid")
+    @org.codehaus.jackson.annotate.JsonIgnore
     protected Long hjid;
 
     /**

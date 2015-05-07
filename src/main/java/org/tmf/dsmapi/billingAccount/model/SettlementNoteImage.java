@@ -67,7 +67,7 @@ public class SettlementNoteImage
     protected String imageSize;
     protected String imageFileName;
     protected String imageFileURL;
-    @XmlAttribute(name = "Hjid")
+    @org.codehaus.jackson.annotate.JsonIgnore
     protected Long hjid;
 
     /**

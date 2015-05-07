@@ -67,7 +67,7 @@ public class Issuer
     protected String id;
     protected String href;
     protected TaxRegistration taxRegistration;
-    @XmlAttribute(name = "Hjid")
+    @org.codehaus.jackson.annotate.JsonIgnore
     protected Long hjid;
 
     /**

@@ -96,14 +96,14 @@ public class BillingAccount
     protected String name;
     protected BillingAccountState state;
     protected TimePeriod validFor;
-    protected CustomerAccount customerAccount;
-    protected CustomerBillingCycleSpecification customerBillingCycleSpecification;
-    protected CustomerBillFormat customerBillFormat;
-    protected CustomerBillPresentationMedia customerBillPresentationMedia;
+    protected BillingReference customerAccount;
+    protected BillingReference customerBillingCycleSpecification;
+    protected BillingReference customerBillFormat;
+    protected BillingReference customerBillPresentationMedia;
     protected Currency currency;
     protected List<BillingAccountBalance> billingAccountBalance;
-    protected List<RelatedParty> relatedParty;
-    protected PaymentMean paymentMean;
+    protected List<BillingReference> relatedParty;
+    protected BillingReference paymentMean;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -270,14 +270,14 @@ public class BillingAccount
      * 
      * @return
      *     possible object is
-     *     {@link CustomerAccount }
+     *     {@link BillingReference }
      *     
      */
-    @ManyToOne(targetEntity = CustomerAccount.class, cascade = {
+    @ManyToOne(targetEntity = BillingReference.class, cascade = {
         CascadeType.ALL
     })
     @JoinColumn(name = "CUSTOMER_ACCOUNT_BILLING_ACC_0")
-    public CustomerAccount getCustomerAccount() {
+    public BillingReference getCustomerAccount() {
         return customerAccount;
     }
 
@@ -286,10 +286,10 @@ public class BillingAccount
      * 
      * @param value
      *     allowed object is
-     *     {@link CustomerAccount }
+     *     {@link BillingReference }
      *     
      */
-    public void setCustomerAccount(CustomerAccount value) {
+    public void setCustomerAccount(BillingReference value) {
         this.customerAccount = value;
     }
 
@@ -298,14 +298,14 @@ public class BillingAccount
      * 
      * @return
      *     possible object is
-     *     {@link CustomerBillingCycleSpecification }
+     *     {@link BillingReference }
      *     
      */
-    @ManyToOne(targetEntity = CustomerBillingCycleSpecification.class, cascade = {
+    @ManyToOne(targetEntity = BillingReference.class, cascade = {
         CascadeType.ALL
     })
     @JoinColumn(name = "CUSTOMER_BILLING_CYCLE_SPECI_1")
-    public CustomerBillingCycleSpecification getCustomerBillingCycleSpecification() {
+    public BillingReference getCustomerBillingCycleSpecification() {
         return customerBillingCycleSpecification;
     }
 
@@ -314,10 +314,10 @@ public class BillingAccount
      * 
      * @param value
      *     allowed object is
-     *     {@link CustomerBillingCycleSpecification }
+     *     {@link BillingReference }
      *     
      */
-    public void setCustomerBillingCycleSpecification(CustomerBillingCycleSpecification value) {
+    public void setCustomerBillingCycleSpecification(BillingReference value) {
         this.customerBillingCycleSpecification = value;
     }
 
@@ -326,14 +326,14 @@ public class BillingAccount
      * 
      * @return
      *     possible object is
-     *     {@link CustomerBillFormat }
+     *     {@link BillingReference }
      *     
      */
-    @ManyToOne(targetEntity = CustomerBillFormat.class, cascade = {
+    @ManyToOne(targetEntity = BillingReference.class, cascade = {
         CascadeType.ALL
     })
     @JoinColumn(name = "CUSTOMER_BILL_FORMAT_BILLING_0")
-    public CustomerBillFormat getCustomerBillFormat() {
+    public BillingReference getCustomerBillFormat() {
         return customerBillFormat;
     }
 
@@ -342,10 +342,10 @@ public class BillingAccount
      * 
      * @param value
      *     allowed object is
-     *     {@link CustomerBillFormat }
+     *     {@link BillingReference }
      *     
      */
-    public void setCustomerBillFormat(CustomerBillFormat value) {
+    public void setCustomerBillFormat(BillingReference value) {
         this.customerBillFormat = value;
     }
 
@@ -354,14 +354,14 @@ public class BillingAccount
      * 
      * @return
      *     possible object is
-     *     {@link CustomerBillPresentationMedia }
+     *     {@link BillingReference }
      *     
      */
-    @ManyToOne(targetEntity = CustomerBillPresentationMedia.class, cascade = {
+    @ManyToOne(targetEntity = BillingReference.class, cascade = {
         CascadeType.ALL
     })
     @JoinColumn(name = "CUSTOMER_BILL_PRESENTATION_M_1")
-    public CustomerBillPresentationMedia getCustomerBillPresentationMedia() {
+    public BillingReference getCustomerBillPresentationMedia() {
         return customerBillPresentationMedia;
     }
 
@@ -370,10 +370,10 @@ public class BillingAccount
      * 
      * @param value
      *     allowed object is
-     *     {@link CustomerBillPresentationMedia }
+     *     {@link BillingReference }
      *     
      */
-    public void setCustomerBillPresentationMedia(CustomerBillPresentationMedia value) {
+    public void setCustomerBillPresentationMedia(BillingReference value) {
         this.customerBillPresentationMedia = value;
     }
 
@@ -464,17 +464,17 @@ public class BillingAccount
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link RelatedParty }
+     * {@link BillingReference }
      * 
      * 
      */
-    @OneToMany(targetEntity = RelatedParty.class, cascade = {
+    @OneToMany(targetEntity = BillingReference.class, cascade = {
         CascadeType.ALL
     })
     @JoinColumn(name = "RELATED_PARTY_BILLING_ACCOUN_0")
-    public List<RelatedParty> getRelatedParty() {
+    public List<BillingReference> getRelatedParty() {
         if (relatedParty == null) {
-            relatedParty = new ArrayList<RelatedParty>();
+            relatedParty = new ArrayList<BillingReference>();
         }
         return this.relatedParty;
     }
@@ -483,7 +483,7 @@ public class BillingAccount
      * 
      * 
      */
-    public void setRelatedParty(List<RelatedParty> relatedParty) {
+    public void setRelatedParty(List<BillingReference> relatedParty) {
         this.relatedParty = relatedParty;
     }
 
@@ -492,14 +492,14 @@ public class BillingAccount
      * 
      * @return
      *     possible object is
-     *     {@link PaymentMean }
+     *     {@link BillingReference }
      *     
      */
-    @ManyToOne(targetEntity = PaymentMean.class, cascade = {
+    @ManyToOne(targetEntity = BillingReference.class, cascade = {
         CascadeType.ALL
     })
     @JoinColumn(name = "PAYMENT_MEAN_BILLING_ACCOUNT_0")
-    public PaymentMean getPaymentMean() {
+    public BillingReference getPaymentMean() {
         return paymentMean;
     }
 
@@ -508,10 +508,10 @@ public class BillingAccount
      * 
      * @param value
      *     allowed object is
-     *     {@link PaymentMean }
+     *     {@link BillingReference }
      *     
      */
-    public void setPaymentMean(PaymentMean value) {
+    public void setPaymentMean(BillingReference value) {
         this.paymentMean = value;
     }
 

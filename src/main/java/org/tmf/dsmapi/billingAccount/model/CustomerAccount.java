@@ -64,7 +64,7 @@ public class CustomerAccount
     protected String id;
     protected String href;
     protected String name;
-    @XmlAttribute(name = "Hjid")
+    @org.codehaus.jackson.annotate.JsonIgnore
     protected Long hjid;
 
     /**

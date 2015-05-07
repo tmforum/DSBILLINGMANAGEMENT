@@ -85,7 +85,7 @@ public class SettlementNoteItem
     protected Float taxIncludedAmount;
     protected TimePeriod period;
     protected ProductSpecification productSpecification;
-    @XmlAttribute(name = "Hjid")
+    @org.codehaus.jackson.annotate.JsonIgnore
     protected Long hjid;
 
     /**

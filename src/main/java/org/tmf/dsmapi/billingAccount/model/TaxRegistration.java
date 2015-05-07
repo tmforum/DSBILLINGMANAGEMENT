@@ -58,7 +58,7 @@ public class TaxRegistration
 
     private final static long serialVersionUID = 11L;
     protected String number;
-    @XmlAttribute(name = "Hjid")
+    @org.codehaus.jackson.annotate.JsonIgnore
     protected Long hjid;
 
     /**

@@ -61,7 +61,7 @@ public class ServiceId
     private final static long serialVersionUID = 11L;
     protected String id;
     protected String type;
-    @XmlAttribute(name = "Hjid")
+    @org.codehaus.jackson.annotate.JsonIgnore
     protected Long hjid;
 
     /**

@@ -16,6 +16,7 @@ import org.tmf.dsmapi.commons.exceptions.ExceptionType;
 import org.tmf.dsmapi.billingAccount.model.BillingAccount;
 import org.tmf.dsmapi.billingAccount.event.BillingAccountEventPublisherLocal;
 import org.tmf.dsmapi.billingAccount.model.BillingAccountState;
+import org.tmf.dsmapi.billingAccount.model.BillingReference;
 import org.tmf.dsmapi.billingAccount.model.RelatedParty;
 import org.tmf.dsmapi.billingAccount.model.TimePeriod;
 import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
@@ -58,12 +59,13 @@ public class BillingAccountFacade extends AbstractFacade<BillingAccount> {
         verifyStatus(currentBillingAccount, partialBillingAccount);
 
         if (null != partialBillingAccount.getRatingType()) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_OPERATOR, 
+            throw new BadUsageException(ExceptionType.BAD_USAGE_OPERATOR,
                     "ratingType is not modifiable");
         }
 
-        if (null != partialBillingAccount.getBillingAccountBalance()) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_OPERATOR, 
+        if (null != partialBillingAccount.getBillingAccountBalance()
+                && ! partialBillingAccount.getBillingAccountBalance().isEmpty() ) {
+            throw new BadUsageException(ExceptionType.BAD_USAGE_OPERATOR,
                     "billingAccountBalance is not modifiable");
         }
 
@@ -92,13 +94,13 @@ public class BillingAccountFacade extends AbstractFacade<BillingAccount> {
         if (!newBillingAccount.getState().name().equalsIgnoreCase(BillingAccountState.Defined.name())) {
             throw new BadUsageException(ExceptionType.BAD_USAGE_FLOW_TRANSITION, "state " + newBillingAccount.getState().value() + " is not the first state, attempt : " + BillingAccountState.Defined.value());
         }
-        if( null == newBillingAccount.getRatingType() ){
+        if (null == newBillingAccount.getRatingType()) {
             newBillingAccount.setRatingType("Postpaid");
         }
-        if (null == newBillingAccount.getName()){
+        if (null == newBillingAccount.getName()) {
             newBillingAccount.setName("Customer Name");
         }
-        if (null == newBillingAccount.getValidFor()){
+        if (null == newBillingAccount.getValidFor()) {
             GregorianCalendar gc = new GregorianCalendar();
             gc.setTime(new Date());
             TimePeriod timePeriod = new TimePeriod();
@@ -109,14 +111,16 @@ public class BillingAccountFacade extends AbstractFacade<BillingAccount> {
         }
 
         if (null != newBillingAccount.getCustomerAccount()) {
-            if(null == newBillingAccount.getCustomerAccount().getId())
+            if (null == newBillingAccount.getCustomerAccount().getId()) {
                 throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "customerAccount.id is mandatory");
+            }
         }
 
-        if (null != newBillingAccount.getRelatedParty()) {
-            List<RelatedParty> l_relatedParty = newBillingAccount.getRelatedParty();
+        if (null != newBillingAccount.getRelatedParty()
+                && ! newBillingAccount.getRelatedParty().isEmpty() ) {
+            List<BillingReference> l_relatedParty = newBillingAccount.getRelatedParty();
             boolean findRole = false;
-            for (RelatedParty party : l_relatedParty) {
+            for (BillingReference party : l_relatedParty) {
                 if (null == party.getId()) {
                     throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "relatedParty.id is mandatory");
                 }

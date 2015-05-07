@@ -47,7 +47,9 @@ public class BillingAccountResource {
     public Response create(BillingAccount entity) throws BadUsageException, UnknownResourceException {
         billingAccountFacade.checkCreation(entity);
         billingAccountFacade.create(entity);
-        entity.setHref("http://serverLocalisation:port/DSBillingManagement/api/billingManagement/v2/billingAccount/".concat(Long.toString(entity.getId())));
+        entity.setHref(
+                "http://serverLocalisation:port/DSBillingManagement/api/billingManagement/v2/billingAccount/".concat(Long.toString(entity.getId())));
+        
         billingAccountFacade.edit(entity);
         // 201
         Response response = Response.status(Response.Status.CREATED).entity(entity).build();
@@ -116,7 +118,7 @@ public class BillingAccountResource {
 
         BillingAccount billingAccount = billingAccountFacade.find(id);
         Response response;
-       
+
         // If the result list (list of bills) is not empty, it conains only 1 unique bill
         if (billingAccount != null) {
             // 200
@@ -141,7 +143,7 @@ public class BillingAccountResource {
     public Response patch(@PathParam("id") long id, BillingAccount partialUsage) throws BadUsageException, UnknownResourceException {
         Response response = null;
         BillingAccount currentProduct = billingAccountFacade.updateAttributs(id, partialUsage);
-        
+
         // 201 OK + location
         response = Response.status(Response.Status.CREATED).entity(currentProduct).build();
 

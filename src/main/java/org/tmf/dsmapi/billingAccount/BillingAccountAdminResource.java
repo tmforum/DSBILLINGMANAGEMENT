@@ -25,6 +25,7 @@ import org.tmf.dsmapi.billingAccount.event.BillingAccountEventFacade;
 import org.tmf.dsmapi.billingAccount.event.BillingAccountEventPublisherLocal;
 import org.tmf.dsmapi.billingAccount.model.BillingAccountBalance;
 import org.tmf.dsmapi.billingAccount.model.BillingAccountState;
+import org.tmf.dsmapi.billingAccount.model.BillingReference;
 import org.tmf.dsmapi.billingAccount.model.Currency;
 import org.tmf.dsmapi.billingAccount.model.CustomerAccount;
 import org.tmf.dsmapi.billingAccount.model.CustomerBillFormat;
@@ -249,21 +250,21 @@ public class BillingAccountAdminResource {
         timePeriod.setStartPeriod(gc.getTime());
         billingAccount.setValidFor(timePeriod);
         
-        CustomerAccount customerAccount = new CustomerAccount();
+        BillingReference customerAccount = new BillingReference();
         customerAccount.setId("15");
         customerAccount.setHref("http://serverlocation:port/customerManagement/customerAccount/15");
         customerAccount.setName("Customer Account xxx");
         billingAccount.setCustomerAccount(customerAccount);
         
-        CustomerBillingCycleSpecification cbCycleSpecif = new CustomerBillingCycleSpecification();
+        BillingReference cbCycleSpecif = new BillingReference();
         cbCycleSpecif.setHref("http://server:port/billingManagement/customerbillingCycleSpecification/26");
-        cbCycleSpecif.setFrequency("monthly");
-        cbCycleSpecif.setBillingDateShift(new Integer(15));
+//        cbCycleSpecif.setFrequency("monthly");
+//        cbCycleSpecif.setBillingDateShift(new Integer(15));
         cbCycleSpecif.setName("Monthly billing on the 15");
         billingAccount.setCustomerBillingCycleSpecification(cbCycleSpecif);
         
-        CustomerBillFormat customerBillFormat = new CustomerBillFormat();
-        customerBillFormat.setId(new Long(23));
+        BillingReference customerBillFormat = new BillingReference();
+        customerBillFormat.setId("23");
         customerBillFormat.setHref("http://serverlocation:port/billingManagement/customerBillFormat/23");
         customerBillFormat.setName("Detailed invoice");
         billingAccount.setCustomerBillFormat(customerBillFormat);
@@ -291,14 +292,14 @@ public class BillingAccountAdminResource {
         billingAccountBalances.add(baBalance);
         billingAccount.setBillingAccountBalance(billingAccountBalances);
         
-        List<RelatedParty> relatedParties = new ArrayList<RelatedParty>();
-        RelatedParty relatedParty = new RelatedParty();
+        List<BillingReference> relatedParties = new ArrayList<BillingReference>();
+        BillingReference relatedParty = new BillingReference();
         relatedParty.setId("1");
         relatedParty.setHref("http://serverlocation:port/partyManagement/partyRole/1");
         relatedParty.setRole("bill receiver");
         relatedParties.add(relatedParty);
         
-        relatedParty = new RelatedParty();
+        relatedParty = new BillingReference();
         relatedParty.setId("5");
         relatedParty.setHref("http://serverlocation:port/partyManagement/partyRole/5");
         relatedParty.setRole("bill responsible");
@@ -306,7 +307,7 @@ public class BillingAccountAdminResource {
         
         billingAccount.setRelatedParty(relatedParties);
         
-        PaymentMean paymentMean = new PaymentMean();
+        BillingReference paymentMean = new BillingReference();
         paymentMean.setId("45");
         paymentMean.setHref("http://serverlocation:port/customerManagement/paymentMean/45");
         paymentMean.setName("my favourite payment mean");
