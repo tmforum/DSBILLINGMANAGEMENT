@@ -71,4 +71,9 @@ public enum BillingAccountState {
         throw new IllegalArgumentException(v);
     }
 
+    @Override
+    public String toString() {
+        return value();
+    }
+
 }
