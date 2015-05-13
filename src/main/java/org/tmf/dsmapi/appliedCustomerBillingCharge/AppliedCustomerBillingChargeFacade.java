@@ -12,6 +12,9 @@ import org.tmf.dsmapi.commons.exceptions.BadUsageException;
 import org.tmf.dsmapi.commons.exceptions.ExceptionType;
 import org.tmf.dsmapi.billingAccount.model.AppliedCustomerBillingCharge;
 import org.tmf.dsmapi.appliedCustomerBillingCharge.event.AppliedCustomerBillingChargeEventPublisherLocal;
+import org.tmf.dsmapi.billingAccount.model.ProductSpecification;
+import org.tmf.dsmapi.billingAccount.model.ServiceId;
+import org.tmf.dsmapi.billingAccount.model.TimePeriod;
 import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
 import org.tmf.dsmapi.commons.utils.BeanUtils;
 
@@ -32,13 +35,63 @@ public class AppliedCustomerBillingChargeFacade extends AbstractFacade<AppliedCu
         return em;
     }
 
-    @Override
-    public void create(AppliedCustomerBillingCharge entity) throws BadUsageException {
-        if (entity.getId() != null) {
+    public void checkCreation(AppliedCustomerBillingCharge newBillingCharge) throws BadUsageException {
+
+        if (newBillingCharge.getId() != null) {
             throw new BadUsageException(ExceptionType.BAD_USAGE_GENERIC, "While creating AppliedCustomerBillingCharge, id must be null");
         }
 
-        super.create(entity);
+        if (null == newBillingCharge.getDate()) {
+            newBillingCharge.setDate(new Date());
+        }
+
+        if (null == newBillingCharge.getType()) {
+            throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "type is mandatory");
+        }
+
+        if (null == newBillingCharge.getCurrencyCode()) {
+            throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "currencyCode is mandatory");
+        }
+
+        if (null == newBillingCharge.getTaxExcludedAmount()) {
+            throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "taxExcludedAmount is mandatory");
+        }
+
+        if (null != newBillingCharge.getServiceId()
+                && !newBillingCharge.getServiceId().isEmpty()) {
+            for (ServiceId servideId : newBillingCharge.getServiceId()) {
+                //TODO return 400 if service.id is invalid
+                if (null == servideId.getId()) {
+                    throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "serviceId.id is mandatory");
+                }
+            }
+        }
+
+        if (null != newBillingCharge.getProductSpecification()
+                && !newBillingCharge.getProductSpecification().isEmpty()) {
+            for (ProductSpecification productSpecification : newBillingCharge.getProductSpecification()) {
+                if (null == productSpecification.getName()) {
+                    throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "productSpecification.name is mandatory");
+                }
+            }
+        }
+
+        if (null != newBillingCharge.getPeriod()
+                && !newBillingCharge.getPeriod().isEmpty()) {
+            if (newBillingCharge.getType().equalsIgnoreCase("recurring")) {
+                for (TimePeriod timePeriod : newBillingCharge.getPeriod()) {
+                    if (null == timePeriod.getStartPeriod()) {
+                        throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "timePeriod.startPeriod is mandatory for recurring charge");
+                    }
+                    if (null == timePeriod.getEndPeriod()) {
+                        throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "timePeriod.endPeriod is mandatory for recurring charge");
+                    }
+                }
+            }
+        }
+        
+        //TODO Service must have been created previously, productSpecification  must have been created previously
+
     }
 
     public AppliedCustomerBillingCharge updateAttributs(long id, AppliedCustomerBillingCharge partialCBC) throws UnknownResourceException, BadUsageException {

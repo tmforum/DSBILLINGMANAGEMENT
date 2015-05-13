@@ -46,8 +46,11 @@ public class AppliedCustomerBillingChargeResource {
     @POST
     @Consumes({"application/json"})
     @Produces({"application/json"})
-    public Response create(AppliedCustomerBillingCharge entity) throws BadUsageException {
+    public Response create(AppliedCustomerBillingCharge entity, @Context UriInfo info) throws BadUsageException, UnknownResourceException {
+        appliedCustomerBillingChargeFacade.checkCreation(entity);
         appliedCustomerBillingChargeFacade.create(entity);
+        entity.setHref(info.getAbsolutePath()+ "/" + Long.toString(entity.getId()));
+        appliedCustomerBillingChargeFacade.edit(entity);
         publisher.createNotification(entity, new Date());
         // 201
         Response response = Response.status(Response.Status.CREATED).entity(entity).build();

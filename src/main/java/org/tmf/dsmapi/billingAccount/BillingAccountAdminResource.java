@@ -27,12 +27,7 @@ import org.tmf.dsmapi.billingAccount.model.BillingAccountBalance;
 import org.tmf.dsmapi.billingAccount.model.BillingAccountState;
 import org.tmf.dsmapi.billingAccount.model.BillingReference;
 import org.tmf.dsmapi.billingAccount.model.Currency;
-import org.tmf.dsmapi.billingAccount.model.CustomerAccount;
-import org.tmf.dsmapi.billingAccount.model.CustomerBillFormat;
 import org.tmf.dsmapi.billingAccount.model.CustomerBillPresentationMedia;
-import org.tmf.dsmapi.billingAccount.model.CustomerBillingCycleSpecification;
-import org.tmf.dsmapi.billingAccount.model.PaymentMean;
-import org.tmf.dsmapi.billingAccount.model.RelatedParty;
 import org.tmf.dsmapi.billingAccount.model.TimePeriod;
 
 @Stateless
