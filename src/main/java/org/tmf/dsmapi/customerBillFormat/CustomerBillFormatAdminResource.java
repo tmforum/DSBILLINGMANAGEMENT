@@ -14,7 +14,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import org.tmf.dsmapi.commons.exceptions.BadUsageException;
 import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
 import org.tmf.dsmapi.commons.jaxrs.Report;
@@ -32,8 +34,8 @@ public class CustomerBillFormatAdminResource {
     CustomerBillFormatFacade customerBillFormatFacade;
     @EJB
     CustomerBillFormatEventFacade eventFacade;
-    @EJB
-    CustomerBillFormatEventPublisherLocal publisher;
+//    @EJB
+//    CustomerBillFormatEventPublisherLocal publisher;
 
     @GET
     @Produces({"application/json"})
@@ -44,27 +46,32 @@ public class CustomerBillFormatAdminResource {
     /**
      *
      * For test purpose only
+     *
      * @param entities
      * @return
      */
     @POST
     @Consumes({"application/json"})
     @Produces({"application/json"})
-    public Response post(List<CustomerBillFormat> entities) {
+    public Response post(List<CustomerBillFormat> entities, @Context UriInfo info) throws UnknownResourceException {
 
         if (entities == null) {
             return Response.status(Response.Status.BAD_REQUEST.getStatusCode()).build();
         }
 
         int previousRows = customerBillFormatFacade.count();
-        int affectedRows;
+        int affectedRows=0;
 
         // Try to persist entities
         try {
-            affectedRows = customerBillFormatFacade.create(entities);
             for (CustomerBillFormat entitie : entities) {
-                publisher.createNotification(entitie, new Date());
+                customerBillFormatFacade.create(entitie);
+                entitie.setHref(info.getAbsolutePath() + "/" + Long.toString(entitie.getId()));
+                customerBillFormatFacade.edit(entitie);
+                affectedRows = affectedRows + 1;
+//                publisher.createNotification(entitie, new Date());
             }
+//            affectedRows = customerBillFormatFacade.create(entities);
         } catch (BadUsageException e) {
             return Response.status(Response.Status.BAD_REQUEST.getStatusCode()).build();
         }
@@ -89,9 +96,9 @@ public class CustomerBillFormatAdminResource {
         if (customerBillFormat != null) {
             entity.setId(id);
             customerBillFormatFacade.edit(entity);
-            publisher.valueChangedNotification(entity, new Date());
-            // 201 OK + location
-            response = Response.status(Response.Status.CREATED).entity(entity).build();
+//            publisher.valueChangedNotification(entity, new Date());
+            // 200 OK + location
+            response = Response.status(Response.Status.OK).entity(entity).build();
 
         } else {
             // 404 not found
@@ -103,6 +110,7 @@ public class CustomerBillFormatAdminResource {
     /**
      *
      * For test purpose only
+     *
      * @return
      * @throws org.tmf.dsmapi.commons.exceptions.UnknownResourceException
      */
@@ -130,6 +138,7 @@ public class CustomerBillFormatAdminResource {
     /**
      *
      * For test purpose only
+     *
      * @param id
      * @return
      * @throws UnknownResourceException
@@ -137,41 +146,35 @@ public class CustomerBillFormatAdminResource {
     @DELETE
     @Path("{id}")
     public Response delete(@PathParam("id") Long id) throws UnknownResourceException {
+        int previousRows = customerBillFormatFacade.count();
+        CustomerBillFormat entity = customerBillFormatFacade.find(id);
+
+        // Event deletion
+//        publisher.deletionNotification(entity, new Date());
         try {
-            int previousRows = customerBillFormatFacade.count();
-            CustomerBillFormat entity = customerBillFormatFacade.find(id);
-
-            // Event deletion
-            publisher.deletionNotification(entity, new Date());
-            try {
-                //Pause for 4 seconds to finish notification
-                Thread.sleep(4000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(CustomerBillFormatAdminResource.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            // remove event(s) binding to the resource
-            List<CustomerBillFormatEvent> events = eventFacade.findAll();
-            for (CustomerBillFormatEvent event : events) {
-                if (event.getResource().getId().equals(id)) {
-                    eventFacade.remove(event.getId());
-                }
-            }
-            //remove resource
-            customerBillFormatFacade.remove(id);
-
-            int affectedRows = 1;
-            Report stat = new Report(customerBillFormatFacade.count());
-            stat.setAffectedRows(affectedRows);
-            stat.setPreviousRows(previousRows);
-
-            // 200 
-            Response response = Response.ok(stat).build();
-            return response;
-        } catch (UnknownResourceException ex) {
+            //Pause for 4 seconds to finish notification
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
             Logger.getLogger(CustomerBillFormatAdminResource.class.getName()).log(Level.SEVERE, null, ex);
-            Response response = Response.status(Response.Status.NOT_FOUND).build();
-            return response;
         }
+        // remove event(s) binding to the resource
+        List<CustomerBillFormatEvent> events = eventFacade.findAll();
+        for (CustomerBillFormatEvent event : events) {
+            if (event.getResource().getId().equals(id)) {
+                eventFacade.remove(event.getId());
+            }
+        }
+        //remove resource
+        customerBillFormatFacade.remove(id);
+
+        int affectedRows = 1;
+        Report stat = new Report(customerBillFormatFacade.count());
+        stat.setAffectedRows(affectedRows);
+        stat.setPreviousRows(previousRows);
+
+        // 200 
+        Response response = Response.ok(stat).build();
+        return response;
     }
 
     @GET

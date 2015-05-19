@@ -6,7 +6,7 @@
 	"folders": [
 		{
 			"id": "8f961a8b-c3b4-1a9a-00eb-8d7653f77908",
-			"name": "admin restrcited to admin user",
+			"name": "admin restricted to admin user",
 			"description": "",
 			"order": [
 				"70f9f23b-44da-d024-ecd6-511e50671ea5",
@@ -16,14 +16,13 @@
 				"95782f0b-09d8-aff6-e8f4-218348976b8f",
 				"7e6cf8e9-1288-02ef-6aba-074bae2d7c15",
 				"0785defe-f256-eac2-0513-72a80b124fca",
-				"cde063a1-a068-bb2f-2288-01b9ffba7bf4",
-				"3e70ba42-f26a-7418-e8af-d3ad706d0f52"
+				"cde063a1-a068-bb2f-2288-01b9ffba7bf4"
 			],
 			"collection_name": "billingManagement",
 			"collection_id": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
-			"collection_owner": 0,
+			"collection_owner": "41284",
 			"write": true,
-			"owner": 0,
+			"owner": "41284",
 			"collection": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e"
 		},
@@ -40,9 +39,9 @@
 			],
 			"collection_name": "billingManagement",
 			"collection_id": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
-			"collection_owner": 0,
+			"collection_owner": "41284",
 			"write": true,
-			"owner": 0,
+			"owner": "41284",
 			"collection": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e"
 		},
@@ -52,22 +51,21 @@
 			"description": "",
 			"order": [
 				"efdfd7c3-18c4-fa6d-2534-ca873886cd3e",
+				"7c1782fb-60b4-b4b9-e40f-c512e9687f5a",
 				"07264cf4-d672-f4a6-f8b0-4ee6f47d645c",
 				"2855faa0-61de-ecff-a0e8-91fc6159ba6d",
 				"eac19cb0-7024-a554-1018-ef313d0dff9e",
 				"bde32f48-173a-f029-6502-16b8bfe268f7",
-				"7c1782fb-60b4-b4b9-e40f-c512e9687f5a",
 				"bc948c7e-6252-263e-cae8-44916a840b22",
 				"c395718f-e6b7-4c00-0c54-0d055555ebd6",
 				"88cca71b-f45f-1f96-d5f9-2b276670ec78",
-				"047c531b-fb7b-7dc6-d824-04b537d95989",
-				"dda1a8bb-09a6-e0f2-5c62-6dda2f5c947d"
+				"047c531b-fb7b-7dc6-d824-04b537d95989"
 			],
 			"collection_name": "billingManagement",
 			"collection_id": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
-			"collection_owner": 0,
+			"collection_owner": "41284",
 			"write": true,
-			"owner": 0,
+			"owner": "41284",
 			"collection": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e"
 		},
@@ -76,13 +74,14 @@
 			"name": "customerBillPresentationMedia api",
 			"description": "",
 			"order": [
-				"e91bf8a9-5807-90fc-ec07-881316020ab3"
+				"e91bf8a9-5807-90fc-ec07-881316020ab3",
+				"bad65c1c-deb4-67e2-48ba-417137189a57"
 			],
 			"collection_name": "billingManagement",
 			"collection_id": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
-			"collection_owner": 0,
+			"collection_owner": "41284",
 			"write": true,
-			"owner": 0,
+			"owner": "41284",
 			"collection": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e"
 		},
@@ -91,13 +90,14 @@
 			"name": "customerBillingCycleSpecification api",
 			"description": "",
 			"order": [
-				"4ce87e79-904a-554d-d568-cc30e9b0949e"
+				"4ce87e79-904a-554d-d568-cc30e9b0949e",
+				"1a7b5560-00c2-2f50-1d86-66f78cd2b647"
 			],
 			"collection_name": "billingManagement",
 			"collection_id": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
-			"collection_owner": 0,
+			"collection_owner": "41284",
 			"write": true,
-			"owner": 0,
+			"owner": "41284",
 			"collection": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e"
 		},
@@ -106,13 +106,14 @@
 			"name": "customerBillingFormat api",
 			"description": "",
 			"order": [
-				"d5f0a4ff-7945-4426-7e36-df7688e6e774"
+				"d5f0a4ff-7945-4426-7e36-df7688e6e774",
+				"9aadc267-6527-5afb-324f-124d5834dcce"
 			],
 			"collection_name": "billingManagement",
 			"collection_id": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
-			"collection_owner": 0,
+			"collection_owner": "41284",
 			"write": true,
-			"owner": 0,
+			"owner": "41284",
 			"collection": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e"
 		},
@@ -127,9 +128,9 @@
 			],
 			"collection_name": "billingManagement",
 			"collection_id": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
-			"collection_owner": 0,
+			"collection_owner": "41284",
 			"write": true,
-			"owner": 0,
+			"owner": "41284",
 			"collection": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e"
 		},
@@ -139,20 +140,22 @@
 			"description": "",
 			"order": [
 				"1cc6f71d-b502-68a8-7220-3b4e3a60cee9",
-				"158f0de0-67e3-55e1-0e38-032adce11922"
+				"158f0de0-67e3-55e1-0e38-032adce11922",
+				"84fc8512-8ee6-1440-9418-cabd65e7e60e",
+				"82658881-a43c-04cb-4bb6-2b4c90e84bfa"
 			],
 			"collection_name": "billingManagement",
 			"collection_id": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
-			"collection_owner": 0,
+			"collection_owner": "41284",
 			"write": true,
-			"owner": 0,
+			"owner": "41284",
 			"collection": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e"
 		}
 	],
 	"timestamp": 1427793344438,
 	"synced": false,
-	"owner": 0,
+	"owner": "41284",
 	"sharedWithTeam": false,
 	"subscribed": false,
 	"remoteLink": "https://www.getpostman.com/collections/62a0c088801b4bc91ee7",
@@ -165,7 +168,7 @@
 			"url": "{{billingManagementApi}}/hub/:id",
 			"preRequestScript": "",
 			"pathVariables": {
-				"id": "5"
+				"id": ""
 			},
 			"method": "DELETE",
 			"dataMode": "binary",
@@ -173,12 +176,15 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1430150382442,
+			"time": 1429629228219,
 			"name": "delete hub by id",
 			"description": "delete hub by id",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
-			"synced": false
+			"write": true,
+			"folder": "b1a2422a-e971-dd43-ac79-268a10612680",
+			"synced": false,
+			"owner": "41284"
 		},
 		{
 			"id": "07264cf4-d672-f4a6-f8b0-4ee6f47d645c",
@@ -190,17 +196,15 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Body does not contain Hjid\"] = !responseBody.has(\"Hjid\");\n\ntests[\"Body contains field 'name'\"] = responseBody.has(\"name\");\ntests[\"Body contains field 'state'\"] = responseBody.has(\"state\");\ntests[\"Body contains field 'amount'\"] = responseBody.has(\"amount\");",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1429707802905,
+			"time": 1431951255521,
 			"name": "/billingAccount attribute selection",
 			"description": "retrieve billingAccount collections no id",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
-			"synced": false,
-			"owner": 0,
-			"folder": "b1a2422a-e971-dd43-ac79-268a10612680"
+			"synced": false
 		},
 		{
 			"id": "0785defe-f256-eac2-0513-72a80b124fca",
@@ -220,7 +224,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "8f961a8b-c3b4-1a9a-00eb-8d7653f77908"
 		},
 		{
@@ -244,7 +248,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "e5916aa5-6b87-4ce3-34fe-9bae4db4889c"
 		},
 		{
@@ -260,15 +264,35 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1427809581696,
+			"time": 1431956984816,
 			"name": "/appliedCustomerBillingCharge",
 			"description": "create a appliedCustomerBillingCharge",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"rawModeData": "{\r\n    \"date\": \"2013-04-19T16:42:23.0Z\",\r\n    \"description\": \"Partner Premium monthly fee\",\r\n    \"type\": \"recurring\",\r\n    \"currencyCode\": \"USD\",\r\n    \"taxIncludedAmount\": 2.4,\r\n    \"taxExcludedAmount\": 2,\r\n    \"appliedCustomerBillingTaxRate\": [\r\n        {\r\n            \"amount\": 0.4,\r\n            \"taxCategory\": \"VAT\"\r\n        }\r\n    ],\r\n    \"serviceId\": [\r\n        {\r\n            \"id\": \"0601020304\",\r\n            \"type\": \"Mobile number\"\r\n        }\r\n    ],\r\n    \"productSpecification\": [\r\n        {\r\n            \"name\": \"Partner Premium\",\r\n            \"productNumber\": \"P001\"\r\n        }\r\n    ],\r\n    \"period\": [\r\n        {\r\n            \"startDateTime\": \"2013-10-01T00:00:00.0Z\",\r\n            \"endDateTime\": \"2013-10-31T00:00:00.0Z\"\r\n        }\r\n    ]\r\n}\r\n",
-			"owner": 0,
-			"folder": "7d232ca1-b2e5-5836-9857-f28fbba8f649"
+			"rawModeData": "{\r\n    \"date\": \"2013-04-19T16:42:23.0Z\",\r\n    \"description\": \"Partner Premium monthly fee\",\r\n    \"type\": \"recurring\",\r\n    \"currencyCode\": \"USD\",\r\n    \"taxIncludedAmount\": 2.4,\r\n    \"taxExcludedAmount\": 2,\r\n    \"appliedCustomerBillingTaxRate\": [\r\n        {\r\n            \"amount\": 0.4,\r\n            \"taxCategory\": \"VAT\"\r\n        }\r\n    ],\r\n    \"serviceId\": [\r\n        {\r\n            \"id\": \"0601020304\",\r\n            \"type\": \"Mobile number\"\r\n        }\r\n    ],\r\n    \"productSpecification\": [\r\n        {\r\n            \"name\": \"Partner Premium\",\r\n            \"productNumber\": \"P001\"\r\n        }\r\n    ],\r\n    \"period\": [\r\n        {\r\n            \"startPeriod\": \"2013-10-01T00:00:00.0Z\",\r\n            \"endPeriod\": \"2013-10-31T00:00:00.0Z\"\r\n        }\r\n    ]\r\n}\r\n"
+		},
+		{
+			"id": "1a7b5560-00c2-2f50-1d86-66f78cd2b647",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{billingManagementApi}}/customerBillingCycleSpecification/:id",
+			"preRequestScript": "",
+			"pathVariables": {
+				"id": ""
+			},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1432037463852,
+			"name": "/customerBillingCycleSpecification/{id}",
+			"description": "select a customerBillingCycleSpecification with id",
+			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
+			"responses": [],
+			"synced": false
 		},
 		{
 			"id": "1cc6f71d-b502-68a8-7220-3b4e3a60cee9",
@@ -289,53 +313,28 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "e5916aa5-6b87-4ce3-34fe-9bae4db4889c"
 		},
 		{
 			"id": "2855faa0-61de-ecff-a0e8-91fc6159ba6d",
 			"headers": "Content-Type: application/json\nAccept: application/json\n",
-			"url": "{{billingManagementApi}}/billingAccount/?state=Defined,Suspended",
+			"url": "{{billingManagementApi}}/billingAccount/?state=Defined,Active",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\ntests[\"Body does not contain Hjid\"] = !responseBody.has(\"Hjid\");\n\nvar bodyData = JSON.parse(responseBody);\ntests[\"Response contains state Defined\"] = (bodyData[0].state === \"Defined\" || bodyData[1].state === \"Defined\");\ntests[\"Response contains state Active\"] = (bodyData[0].state === \"Active\" || bodyData[1].state === \"Active\");",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1429708133741,
+			"time": 1431953700340,
 			"name": "/billingAccount attribute filtering",
 			"description": "retrieve billingAccount collections no id",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
-			"synced": false,
-			"owner": 0,
-			"folder": "b1a2422a-e971-dd43-ac79-268a10612680"
-		},
-		{
-			"id": "3e70ba42-f26a-7418-e8af-d3ad706d0f52",
-			"headers": "Content-Type: application/json\nAccept: application/json\n",
-			"url": "{{billingManagementAdminApi}}/billingAccount/count",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"version": 2,
-			"tests": "",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1427804162512,
-			"name": "proto",
-			"description": "get a prototype of billingAccount",
-			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
-			"responses": [],
-			"synced": false,
-			"owner": 0,
-			"folder": "8f961a8b-c3b4-1a9a-00eb-8d7653f77908",
-			"write": true
+			"synced": false
 		},
 		{
 			"id": "44a076df-f6a1-3b25-f0c9-0ba6b709dca8",
@@ -356,7 +355,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "a03b16c5-7052-536b-67dc-759e7fd314be",
 			"write": true
 		},
@@ -373,14 +372,14 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1429781745443,
-			"name": "create one settlementNoteAdvice",
-			"description": "create one",
+			"time": 1429783374875,
+			"name": "create list of settlementNoteAdvices",
+			"description": "create list",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"rawModeData": "{\n    \"date\": \"2013-04-19T16:42:23.0Z\",\n    \"description\": \"Settlement note from 2013/10/01 to 2013/10/31\",\n    \"paymentDueDate\": \"2013-04-19T16:42:23.0Z\",\n    \"taxDate\": \"2013-04-19T16:42:23.0Z\",\n    \"currencyCode\": \"EUR\",\n    \"taxExcludedAmount\": 89933.25,\n    \"taxIncludedAmount\": 107560.16,\n    \"taxItem\": [\n        {\n            \"taxCategory\": \"VAT\",\n            \"taxRate\": 19.6,\n            \"taxAmount\": 17626.91\n        }\n    ],\n    \"settlementMethod\": {\n        \"code\": \"NET\",\n        \"label\": \"Netting\"\n    },\n    \"receiver\": {\n        \"id\": \"63796\",\n        \"href\": \"http://serverlocation:port/PartyManagement/partyRole/63796\",\n        \"taxRegistration\": {\n            \"number\": \"FR12345678912\"\n        }\n    },\n    \"issuer\": {\n        \"id\": \"0800\",\n        \"href\": \"http://serverlocation:port/PartyManagement/partyRole/0800\",\n        \"taxRegistration\": {\n            \"number\": \"FR98765432178\"\n        }\n    },\n    \"settlementNoteImage\": {\n        \"imageFormat\": \"pdf\",\n        \"imageSize\": 130,\n        \"imageFileName\": \"BungiornoFrance-2013October-1234\",\n        \"imageFileURL\": \"http://serverlocation:port/SettlementNoteImage/RQAAAABAAAAAAAAALryCQAbAAAAMAAxAF8ASQBuAHMAdABhAGwAb\"\n    },\n    \"settlementNoteItem\": [\n        {\n            \"itemNumber\": \"1\",\n            \"itemId\": \"0815\",\n            \"itemLabel\": \"Achats Gamifive\",\n            \"quantity\": 34873,\n            \"taxItem\": [\n                {\n                    \"taxCategory\": \"VAT\",\n                    \"taxRate\": 19.6,\n                    \"taxAmount\": 9999.76\n                }\n            ],\n            \"period\": {\n                \"startPeriod\": \"2013-10-01T00:00:00.0Z\",\n                \"endPeriod\": \"2013-10-31T00:00:00.0Z\"\n            },\n            \"productSpecification\": {\n                \"name\": \"Gamifive\",\n                \"productNumber\": \"17060\"\n            }\n        },\n        {\n            \"itemNumber\": \"2\",\n            \"itemId\": \"0816\",\n            \"itemLabel\": \"Achats iGirls TV\",\n            \"quantity\": 19001,\n            \"period\": {\n                \"startPeriod\": \"2013-10-01T00:00:00.0Z\",\n                \"endPeriod\": \"2013-10-31T00:00:00.0Z\"\n            },\n            \"productSpecification\": {\n                \"name\": \"iGirls TV\",\n                \"productNumber\": \"17063\"\n            }\n        }\n    ]\n}\n",
-			"owner": 0,
+			"rawModeData": "[\n    {\n    \"date\": \"2013-04-19T16:42:23.0Z\",\n    \"description\": \"Settlement note from 2013/10/01 to 2013/10/31\",\n    \"paymentDueDate\": \"2013-04-19T16:42:23.0Z\",\n    \"taxDate\": \"2013-04-19T16:42:23.0Z\",\n    \"currencyCode\": \"EUR\",\n    \"taxExcludedAmount\": 89933.25,\n    \"taxIncludedAmount\": 107560.16,\n    \"taxItem\": [\n        {\n            \"taxCategory\": \"VAT\",\n            \"taxRate\": 19.6,\n            \"taxAmount\": 17626.91\n        }\n    ],\n    \"settlementMethod\": {\n        \"code\": \"NET\",\n        \"label\": \"Netting\"\n    },\n    \"receiver\": {\n        \"id\": \"63796\",\n        \"href\": \"http://serverlocation:port/PartyManagement/partyRole/63796\",\n        \"taxRegistration\": {\n            \"number\": \"FR12345678912\"\n        }\n    },\n    \"issuer\": {\n        \"id\": \"0800\",\n        \"href\": \"http://serverlocation:port/PartyManagement/partyRole/0800\",\n        \"taxRegistration\": {\n            \"number\": \"FR98765432178\"\n        }\n    },\n    \"settlementNoteImage\": {\n        \"imageFormat\": \"pdf\",\n        \"imageSize\": 130,\n        \"imageFileName\": \"BungiornoFrance-2013October-1234\",\n        \"imageFileURL\": \"http://serverlocation:port/SettlementNoteImage/RQAAAABAAAAAAAAALryCQAbAAAAMAAxAF8ASQBuAHMAdABhAGwAb\"\n    },\n    \"settlementNoteItem\": [\n        {\n            \"itemNumber\": \"1\",\n            \"itemId\": \"0815\",\n            \"itemLabel\": \"Achats Gamifive\",\n            \"quantity\": 34873,\n            \"taxItem\": [\n                {\n                    \"taxCategory\": \"VAT\",\n                    \"taxRate\": 19.6,\n                    \"taxAmount\": 9999.76\n                }\n            ],\n            \"period\": {\n                \"startDateTime\": \"2013-10-01T00:00:00.0Z\",\n                \"endDateTime\": \"2013-10-31T00:00:00.0Z\"\n            },\n            \"productSpecification\": {\n                \"name\": \"Gamifive\",\n                \"productNumber\": \"17060\"\n            }\n        },\n        {\n            \"itemNumber\": \"2\",\n            \"itemId\": \"0816\",\n            \"itemLabel\": \"Achats iGirls TV\",\n            \"quantity\": 19001,\n            \"period\": {\n                \"startDateTime\": \"2013-10-01T00:00:00.0Z\",\n                \"endDateTime\": \"2013-10-31T00:00:00.0Z\"\n            },\n            \"productSpecification\": {\n                \"name\": \"iGirls TV\",\n                \"productNumber\": \"17063\"\n            }\n        }\n    ]\n    }\n]\n",
+			"owner": "41284",
 			"folder": "8f961a8b-c3b4-1a9a-00eb-8d7653f77908"
 		},
 		{
@@ -402,7 +401,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "b8c329c1-8ca5-1929-0ec0-ddc467600935"
 		},
 		{
@@ -418,15 +417,13 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1429780886364,
+			"time": 1431943496820,
 			"name": "create list of billingAccount",
 			"description": "create a list",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"rawModeData": "[\n    {\n    \"ratingType\": \"postpaid\",\n    \"name\": \"my personal Billing Account\",\n    \"state\": \"Defined\",\n    \"validFor\": {\n        \"startDateTime\": \"2013-04-19T16:42:23.0Z\"\n    },\n    \"customerAccount\": {\n        \"href\": \"http://serverlocation:port/customerManagement/customerAccount/15\",\n        \"name\": \"Customer Account xxx\"\n    },\n    \"customerBillingCycleSpecification\": {\n        \"href\": \"http://server:port/billingManagement/customerbillingCycleSpecification/26\",\n        \"name\": \"Monthly billing on the 15\",\n        \"billingDateShift\": 15,\n        \"frequency\": \"monthly\"\n    },\n    \"customerBillFormat\": {\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillFormat/23\",\n        \"name\": \"Detailed invoice\"\n    },\n    \"customerBillPresentationMedia\": {\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillPresentationMedia/25\",\n        \"name\": \"Electronic invoice\"\n    },\n    \"currency\": {\n        \"currencyCode\": \"EUR\"\n    },\n    \"billingAccountBalance\": [\n        {\n            \"type\": \"ReceivableBalance\",\n            \"amount\": 52.3,\n            \"validFor\": {\n                \"startDateTime\": \"2013-04-19T16:42:23.0Z\",\n                \"endDateTime\": \"2013-06-19T00:00:00.0Z\"\n            },\n            \"status\": \"Due\"\n        }\n    ],\n    \"relatedParty\": [\n        {\n            \"id\": \"1\",\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/1\",\n            \"role\": \"bill receiver\"\n        },\n        {\n            \"id\": \"5\",\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/5\",\n            \"role\": \"bill responsible\"\n        }\n    ],\n    \"paymentMean\": {\n        \"id\": \"45\",\n        \"href\": \"http://serverlocation:port/customerManagement/paymentMean/45\",\n        \"name\": \"my favourite payment mean\"\n    }\n},\n{\n    \"ratingType\": \"postpaid\",\n    \"name\": \"my personal Billing Account\",\n    \"state\": \"Defined\",\n    \"validFor\": {\n        \"startDateTime\": \"2013-04-19T16:42:23.0Z\"\n    },\n    \"customerAccount\": {\n        \"href\": \"http://serverlocation:port/customerManagement/customerAccount/15\",\n        \"name\": \"Customer Account xxx\"\n    },\n    \"customerBillingCycleSpecification\": {\n        \"href\": \"http://server:port/billingManagement/customerbillingCycleSpecification/26\",\n        \"name\": \"Monthly billing on the 15\",\n        \"billingDateShift\": 15,\n        \"frequency\": \"monthly\"\n    },\n    \"customerBillFormat\": {\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillFormat/23\",\n        \"name\": \"Detailed invoice\"\n    },\n    \"customerBillPresentationMedia\": {\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillPresentationMedia/25\",\n        \"name\": \"Electronic invoice\"\n    },\n    \"currency\": {\n        \"currencyCode\": \"EUR\"\n    },\n    \"billingAccountBalance\": [\n        {\n            \"type\": \"ReceivableBalance\",\n            \"amount\": 52.3,\n            \"validFor\": {\n                \"startDateTime\": \"2013-04-19T16:42:23.0Z\",\n                \"endDateTime\": \"2013-06-19T00:00:00.0Z\"\n            },\n            \"status\": \"Due\"\n        }\n    ],\n    \"relatedParty\": [\n        {\n            \"id\": \"1\",\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/1\",\n            \"role\": \"bill receiver\"\n        },\n        {\n            \"id\": \"5\",\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/5\",\n            \"role\": \"bill responsible\"\n        }\n    ],\n    \"paymentMean\": {\n        \"id\": \"45\",\n        \"href\": \"http://serverlocation:port/customerManagement/paymentMean/45\",\n        \"name\": \"my favourite payment mean\"\n    }\n}\n\n]\n",
-			"owner": 0,
-			"folder": "8f961a8b-c3b4-1a9a-00eb-8d7653f77908"
+			"rawModeData": "[\n    {\n    \"ratingType\": \"postpaid\",\n    \"name\": \"my personal Billing Account\",\n    \"state\": \"Defined\",\n    \"validFor\": {\n        \"startPeriod\": \"2013-04-19T16:42:23.0Z\"\n    },\n    \"customerAccount\": {\n        \"href\": \"http://serverlocation:port/customerManagement/customerAccount/15\",\n        \"name\": \"Customer Account xxx\"\n    },\n    \"customerBillingCycleSpecification\": {\n        \"href\": \"http://server:port/billingManagement/customerbillingCycleSpecification/26\",\n        \"name\": \"Monthly billing on the 15\"\n    },\n    \"customerBillFormat\": {\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillFormat/23\",\n        \"name\": \"Detailed invoice\"\n    },\n    \"customerBillPresentationMedia\": {\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillPresentationMedia/25\",\n        \"name\": \"Electronic invoice\"\n    },\n    \"currency\": {\n        \"currencyCode\": \"EUR\"\n    },\n    \"billingAccountBalance\": [\n        {\n            \"type\": \"ReceivableBalance\",\n            \"amount\": 52.3,\n            \"validFor\": {\n                \"startPeriod\": \"2013-04-19T16:42:23.0Z\",\n                \"endPeriod\": \"2013-06-19T00:00:00.0Z\"\n            },\n            \"status\": \"Due\"\n        }\n    ],\n    \"relatedParty\": [\n        {\n            \"id\": \"1\",\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/1\",\n            \"role\": \"bill receiver\"\n        },\n        {\n            \"id\": \"5\",\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/5\",\n            \"role\": \"bill responsible\"\n        }\n    ],\n    \"paymentMean\": {\n        \"id\": \"45\",\n        \"href\": \"http://serverlocation:port/customerManagement/paymentMean/45\",\n        \"name\": \"my favourite payment mean\"\n    }\n},\n{\n    \"ratingType\": \"postpaid\",\n    \"name\": \"my personal Billing Account\",\n    \"state\": \"Defined\",\n    \"validFor\": {\n        \"startPeriod\": \"2013-04-19T16:42:23.0Z\"\n    },\n    \"customerAccount\": {\n        \"href\": \"http://serverlocation:port/customerManagement/customerAccount/15\",\n        \"name\": \"Customer Account xxx\"\n    },\n    \"customerBillingCycleSpecification\": {\n        \"href\": \"http://server:port/billingManagement/customerbillingCycleSpecification/26\",\n        \"name\": \"Monthly billing on the 15\"\n    },\n    \"customerBillFormat\": {\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillFormat/23\",\n        \"name\": \"Detailed invoice\"\n    },\n    \"customerBillPresentationMedia\": {\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillPresentationMedia/25\",\n        \"name\": \"Electronic invoice\"\n    },\n    \"currency\": {\n        \"currencyCode\": \"EUR\"\n    },\n    \"billingAccountBalance\": [\n        {\n            \"type\": \"ReceivableBalance\",\n            \"amount\": 52.3,\n            \"validFor\": {\n                \"startPeriod\": \"2013-04-19T16:42:23.0Z\",\n                \"endPeriod\": \"2013-06-19T00:00:00.0Z\"\n            },\n            \"status\": \"Due\"\n        }\n    ],\n    \"relatedParty\": [\n        {\n            \"id\": \"1\",\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/1\",\n            \"role\": \"bill receiver\"\n        },\n        {\n            \"id\": \"5\",\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/5\",\n            \"role\": \"bill responsible\"\n        }\n    ],\n    \"paymentMean\": {\n        \"id\": \"45\",\n        \"href\": \"http://serverlocation:port/customerManagement/paymentMean/45\",\n        \"name\": \"my favourite payment mean\"\n    }\n}\n\n]\n"
 		},
 		{
 			"id": "66b0f636-6117-6f5d-184f-3dfc6743c6ab",
@@ -447,7 +444,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "a03b16c5-7052-536b-67dc-759e7fd314be",
 			"write": true
 		},
@@ -470,7 +467,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "8f961a8b-c3b4-1a9a-00eb-8d7653f77908"
 		},
 		{
@@ -494,7 +491,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "7d232ca1-b2e5-5836-9857-f28fbba8f649"
 		},
 		{
@@ -516,7 +513,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "8f961a8b-c3b4-1a9a-00eb-8d7653f77908"
 		},
 		{
@@ -534,13 +531,13 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1431006257275,
+			"time": 1431953625832,
 			"name": "/billingAccount/{id}",
 			"description": "partial update of billingAccount with id",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"rawModeData": "{\r\n    \"name\": \"my personal Billing Account PATCH\",\r\n    \"state\": \"Active\",\r\n    \"validFor\": {\r\n        \"startPeriod\": \"2013-04-19T16:42:23.0Z\"\r\n    },\r\n    \"billingAccountBalance\": [\r\n        {\r\n            \"type\": \"ReceivableBalance\",\r\n            \"amount\": 52.3,\r\n            \"validFor\": {\r\n                \"startPeriod\": \"2013-04-19T16:42:23.0Z\",\r\n                \"endPeriod\": \"2013-06-19T00:00:00.0Z\"\r\n            },\r\n            \"status\": \"Due\"\r\n        }\r\n    ],\r\n    \"customerAccount\": {\r\n        \"href\": \"http://serverlocation:port/customerManagement/customerAccount/15\",\r\n        \"name\": \"Customer Account ZZZ\"\r\n    },\r\n    \"customerBillingCycleSpecification\": {\r\n        \"href\": \"http://server:port/billingManagement/customerbillingCycleSpecification/26\",\r\n        \"name\": \"Monthly billing on the 15 PATCHED\"\r\n    },\r\n    \"customerBillFormat\": {\r\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillFormat/23\",\r\n        \"name\": \"Detailed invoice PATCHED\"\r\n    }\r\n}\r\n"
+			"rawModeData": "{\r\n    \"name\": \"my personal Billing Account PATCH\",\r\n    \"state\": \"Active\"\r\n}\r\n"
 		},
 		{
 			"id": "7e6cf8e9-1288-02ef-6aba-074bae2d7c15",
@@ -560,16 +557,60 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "8f961a8b-c3b4-1a9a-00eb-8d7653f77908"
+		},
+		{
+			"id": "82658881-a43c-04cb-4bb6-2b4c90e84bfa",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{billingManagementApi}}/settlementNoteAdvice/?currencyCode=EUR",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429793369887,
+			"name": "/settlementNoteAdvice attribute filtering",
+			"description": "retrieve settlementNoteAdvice collections no id",
+			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
+			"responses": [],
+			"synced": false,
+			"owner": "41284",
+			"folder": "e5916aa5-6b87-4ce3-34fe-9bae4db4889c"
+		},
+		{
+			"id": "84fc8512-8ee6-1440-9418-cabd65e7e60e",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{billingManagementApi}}/settlementNoteAdvice/?fields=taxExcludedAmount,description",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429793282489,
+			"name": "/settlementNoteAdvice attribute selection copy",
+			"description": "retrieve settlementNoteAdvice collections no id",
+			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
+			"responses": [],
+			"synced": false,
+			"owner": "41284",
+			"folder": "e5916aa5-6b87-4ce3-34fe-9bae4db4889c"
 		},
 		{
 			"id": "88cca71b-f45f-1f96-d5f9-2b276670ec78",
 			"headers": "Content-Type: application/json\nAccept: application/json\n",
-			"url": "{{billingManagementApi}}/hub/:id",
+			"url": "{{billingManagementAdminApi}}/hub/:id",
 			"preRequestScript": "",
 			"pathVariables": {
-				"id": "5"
+				"id": ""
 			},
 			"method": "GET",
 			"data": [],
@@ -578,12 +619,14 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1430150367967,
+			"time": 1429782120371,
 			"name": "/hub/{id}",
 			"description": "select hub by id",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
-			"synced": false
+			"synced": false,
+			"owner": "41284",
+			"folder": "b1a2422a-e971-dd43-ac79-268a10612680"
 		},
 		{
 			"id": "95782f0b-09d8-aff6-e8f4-218348976b8f",
@@ -605,7 +648,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "8f961a8b-c3b4-1a9a-00eb-8d7653f77908"
 		},
 		{
@@ -627,8 +670,52 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "7d232ca1-b2e5-5836-9857-f28fbba8f649"
+		},
+		{
+			"id": "9aadc267-6527-5afb-324f-124d5834dcce",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{billingManagementApi}}/customerBillFormat/:id",
+			"preRequestScript": "",
+			"pathVariables": {
+				"id": ""
+			},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1432037469298,
+			"name": "/customerBillFormat/{id}",
+			"description": "select a customerBillFormat with id",
+			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "bad65c1c-deb4-67e2-48ba-417137189a57",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{billingManagementApi}}/customerBillPresentationMedia/:id",
+			"preRequestScript": "",
+			"pathVariables": {
+				"id": ""
+			},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1432037457322,
+			"name": "/customerBillPresentationMedia/{id}",
+			"description": "select a customerBillPresentationMedia with id id",
+			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
+			"responses": [],
+			"synced": false
 		},
 		{
 			"id": "bc948c7e-6252-263e-cae8-44916a840b22",
@@ -643,13 +730,15 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1429792427461,
+			"time": 1429792516093,
 			"name": "/hub",
 			"description": "create a hub",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"rawModeData": "{\n  \"callback\":\"{{billingManagementSubscriberApi}}/event\",\n  \"query\":\"eventType=BillingAccountStateChangedNotification,SettlementNoteAdviceNotification\"\n}"
+			"rawModeData": "{\n  \"callback\":\"{{billingManagementSubscriberApi}}/event\",\n  \"query\":\"eventType=BillingAccountStateChangedNotification\"\n}",
+			"owner": "41284",
+			"folder": "b1a2422a-e971-dd43-ac79-268a10612680"
 		},
 		{
 			"id": "bde32f48-173a-f029-6502-16b8bfe268f7",
@@ -661,16 +750,16 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\ntests[\"Body does not contain Hjid\"] = !responseBody.has(\"Hjid\");",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1431005123180,
+			"time": 1431953877509,
 			"name": "/billingAccount",
 			"description": "create a billingAccount",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"rawModeData": "{\r\n    \"ratingType\": \"postpaid\",\r\n    \"name\": \"my personal Billing Account\",\r\n    \"state\": \"Defined\",\r\n    \"validFor\": {\r\n        \"startPeriod\": \"2013-04-19T16:42:23.0Z\"\r\n    },\r\n    \"customerAccount\": {\r\n        \"id\":\"15\",\r\n        \"href\": \"http://serverlocation:port/customerManagement/customerAccount/15\",\r\n        \"name\": \"Customer Account xxx\"\r\n    },\r\n    \"customerBillingCycleSpecification\": {\r\n        \"href\": \"http://server:port/billingManagement/customerbillingCycleSpecification/26\",\r\n        \"name\": \"Monthly billing on the 15\"\r\n    },\r\n    \"customerBillFormat\": {\r\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillFormat/23\",\r\n        \"name\": \"Detailed invoice\"\r\n    },\r\n    \"customerBillPresentationMedia\": {\r\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillPresentationMedia/25\",\r\n        \"name\": \"Electronic invoice\"\r\n    },\r\n    \"currency\": {\r\n        \"currencyCode\": \"EUR\"\r\n    },\r\n    \"billingAccountBalance\": [\r\n        {\r\n            \"type\": \"ReceivableBalance\",\r\n            \"amount\": 52.3,\r\n            \"validFor\": {\r\n                \"startPeriod\": \"2013-04-19T16:42:23.0Z\",\r\n                \"endPeriod\": \"2013-06-19T00:00:00.0Z\"\r\n            },\r\n            \"status\": \"Due\"\r\n        }\r\n    ],\r\n    \"relatedParty\": [\r\n        {\r\n            \"id\": \"1\",\r\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/1\",\r\n            \"role\": \"bill receiver\"\r\n        },\r\n        {\r\n            \"id\": \"5\",\r\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/5\",\r\n            \"role\": \"bill responsible\"\r\n        }\r\n    ],\r\n    \"paymentMean\": {\r\n        \"id\": \"45\",\r\n        \"href\": \"http://serverlocation:port/customerManagement/paymentMean/45\",\r\n        \"name\": \"my favourite payment mean\"\r\n    }\r\n}\r\n"
+			"rawModeData": "{\r\n    \"ratingType\": \"postpaid\",\r\n    \"name\": \"my personal Billing Account\",\r\n    \"state\": \"Defined\",\r\n    \"validFor\": {\r\n        \"startPeriod\": \"2013-04-19T16:42:23.0Z\"\r\n    },\r\n    \"customerAccount\": {\r\n        \"id\" : \"15\",\r\n        \"href\": \"http://serverlocation:port/customerManagement/customerAccount/15\",\r\n        \"name\": \"Customer Account xxx\"\r\n    },\r\n    \"customerBillingCycleSpecification\": {\r\n        \"href\": \"http://server:port/billingManagement/customerbillingCycleSpecification/26\",\r\n        \"name\": \"Monthly billing on the 15\"\r\n    },\r\n    \"customerBillFormat\": {\r\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillFormat/23\",\r\n        \"name\": \"Detailed invoice\"\r\n    },\r\n    \"customerBillPresentationMedia\": {\r\n        \"href\": \"http://serverlocation:port/billingManagement/customerBillPresentationMedia/25\",\r\n        \"name\": \"Electronic invoice\"\r\n    },\r\n    \"currency\": {\r\n        \"currencyCode\": \"EUR\"\r\n    },\r\n    \"billingAccountBalance\": [\r\n        {\r\n            \"type\": \"ReceivableBalance\",\r\n            \"amount\": 52.3,\r\n            \"validFor\": {\r\n                \"startPeriod\": \"2013-04-19T16:42:23.0Z\",\r\n                \"endPeriod\": \"2013-06-19T00:00:00.0Z\"\r\n            },\r\n            \"status\": \"Due\"\r\n        }\r\n    ],\r\n    \"relatedParty\": [\r\n        {\r\n            \"id\": \"1\",\r\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/1\",\r\n            \"role\": \"bill receiver\"\r\n        },\r\n        {\r\n            \"id\": \"5\",\r\n            \"href\": \"http://serverlocation:port/partyManagement/partyRole/5\",\r\n            \"role\": \"bill responsible\"\r\n        }\r\n    ],\r\n    \"paymentMean\": {\r\n        \"id\": \"45\",\r\n        \"href\": \"http://serverlocation:port/customerManagement/paymentMean/45\",\r\n        \"name\": \"my favourite payment mean\"\r\n    }\r\n}\r\n"
 		},
 		{
 			"id": "c395718f-e6b7-4c00-0c54-0d055555ebd6",
@@ -691,7 +780,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "b1a2422a-e971-dd43-ac79-268a10612680",
 			"write": true
 		},
@@ -714,7 +803,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "7d232ca1-b2e5-5836-9857-f28fbba8f649"
 		},
 		{
@@ -735,7 +824,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "8f961a8b-c3b4-1a9a-00eb-8d7653f77908",
 			"write": true
 		},
@@ -758,7 +847,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "a03b16c5-7052-536b-67dc-759e7fd314be",
 			"write": true
 		},
@@ -781,28 +870,8 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "b0b3aed7-11bb-c59b-e1ac-6d4481b01227"
-		},
-		{
-			"id": "dda1a8bb-09a6-e0f2-5c62-6dda2f5c947d",
-			"headers": "Content-Type: application/json\nAccept: application/json\n",
-			"url": "{{billingManagementApi}}/hub/proto/billingAccount/event",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"version": 2,
-			"tests": "",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1430150607820,
-			"name": "/proto/billingAccount/event",
-			"description": "get a prototype of billingAccountEvent",
-			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
-			"responses": [],
-			"synced": false
 		},
 		{
 			"id": "e91bf8a9-5807-90fc-ec07-881316020ab3",
@@ -823,7 +892,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "4767d93e-9666-8338-6a27-2e5d79d69103"
 		},
 		{
@@ -838,17 +907,15 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\ntests[\"Body does not contain Hjid\"] = !responseBody.has(\"Hjid\");\n\nvar bodyData = JSON.parse(responseBody);\ntests[\"Response id=1\"] = bodyData.id === 1;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1427793450175,
+			"time": 1431953754970,
 			"name": "/billingAccount/{id}",
 			"description": "select one billingAccount with id",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
-			"synced": false,
-			"owner": 0,
-			"folder": "b1a2422a-e971-dd43-ac79-268a10612680"
+			"synced": false
 		},
 		{
 			"id": "efdfd7c3-18c4-fa6d-2534-ca873886cd3e",
@@ -860,17 +927,15 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\ntests[\"Body does not contain Hjid\"] = !responseBody.has(\"Hjid\");",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1429695912440,
+			"time": 1431942041481,
 			"name": "/billingAccount",
 			"description": "retrieve billingAccount collections no id",
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
-			"synced": false,
-			"owner": 0,
-			"folder": "b1a2422a-e971-dd43-ac79-268a10612680"
+			"synced": false
 		},
 		{
 			"id": "f136a658-b299-495a-f2e6-e79973b27505",
@@ -891,7 +956,7 @@
 			"collectionId": "e7b1e31e-a0f7-bdea-088b-fe9f95a0589e",
 			"responses": [],
 			"synced": false,
-			"owner": 0,
+			"owner": "41284",
 			"folder": "7d232ca1-b2e5-5836-9857-f28fbba8f649"
 		}
 	]

@@ -14,7 +14,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import org.tmf.dsmapi.commons.exceptions.BadUsageException;
 import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
 import org.tmf.dsmapi.commons.jaxrs.Report;
@@ -32,8 +34,8 @@ public class SettlementNoteAdviceAdminResource {
     SettlementNoteAdviceFacade settlementNoteAdviceFacade;
     @EJB
     SettlementNoteAdviceEventFacade eventFacade;
-    @EJB
-    SettlementNoteAdviceEventPublisherLocal publisher;
+//    @EJB
+//    SettlementNoteAdviceEventPublisherLocal publisher;
 
     @GET
     @Produces({"application/json"})
@@ -44,27 +46,32 @@ public class SettlementNoteAdviceAdminResource {
     /**
      *
      * For test purpose only
+     *
      * @param entities
      * @return
      */
     @POST
     @Consumes({"application/json"})
     @Produces({"application/json"})
-    public Response post(List<SettlementNoteAdvice> entities) {
+    public Response post(List<SettlementNoteAdvice> entities, @Context UriInfo info) throws UnknownResourceException {
 
         if (entities == null) {
             return Response.status(Response.Status.BAD_REQUEST.getStatusCode()).build();
         }
 
         int previousRows = settlementNoteAdviceFacade.count();
-        int affectedRows;
+        int affectedRows=0;
 
         // Try to persist entities
         try {
-            affectedRows = settlementNoteAdviceFacade.create(entities);
             for (SettlementNoteAdvice entitie : entities) {
-                publisher.createNotification(entitie, new Date());
+                settlementNoteAdviceFacade.create(entitie);
+                entitie.setHref(info.getAbsolutePath() + "/" + Long.toString(entitie.getId()));
+                settlementNoteAdviceFacade.edit(entitie);
+                affectedRows = affectedRows + 1;
+//                publisher.createNotification(entitie, new Date());
             }
+//            affectedRows = settlementNoteAdviceFacade.create(entities);
         } catch (BadUsageException e) {
             return Response.status(Response.Status.BAD_REQUEST.getStatusCode()).build();
         }
@@ -89,9 +96,9 @@ public class SettlementNoteAdviceAdminResource {
         if (settlementNoteAdvice != null) {
             entity.setId(id);
             settlementNoteAdviceFacade.edit(entity);
-            publisher.valueChangedNotification(entity, new Date());
-            // 201 OK + location
-            response = Response.status(Response.Status.CREATED).entity(entity).build();
+//            publisher.valueChangedNotification(entity, new Date());
+            // 200 OK + location
+            response = Response.status(Response.Status.OK).entity(entity).build();
 
         } else {
             // 404 not found
@@ -103,6 +110,7 @@ public class SettlementNoteAdviceAdminResource {
     /**
      *
      * For test purpose only
+     *
      * @return
      * @throws org.tmf.dsmapi.commons.exceptions.UnknownResourceException
      */
@@ -130,6 +138,7 @@ public class SettlementNoteAdviceAdminResource {
     /**
      *
      * For test purpose only
+     *
      * @param id
      * @return
      * @throws UnknownResourceException
@@ -137,41 +146,35 @@ public class SettlementNoteAdviceAdminResource {
     @DELETE
     @Path("{id}")
     public Response delete(@PathParam("id") Long id) throws UnknownResourceException {
+        int previousRows = settlementNoteAdviceFacade.count();
+        SettlementNoteAdvice entity = settlementNoteAdviceFacade.find(id);
+
+        // Event deletion
+//        publisher.deletionNotification(entity, new Date());
         try {
-            int previousRows = settlementNoteAdviceFacade.count();
-            SettlementNoteAdvice entity = settlementNoteAdviceFacade.find(id);
-
-            // Event deletion
-            publisher.deletionNotification(entity, new Date());
-            try {
-                //Pause for 4 seconds to finish notification
-                Thread.sleep(4000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(SettlementNoteAdviceAdminResource.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            // remove event(s) binding to the resource
-            List<SettlementNoteAdviceEvent> events = eventFacade.findAll();
-            for (SettlementNoteAdviceEvent event : events) {
-                if (event.getEvent().getId().equals(id)) {
-                    eventFacade.remove(event.getId());
-                }
-            }
-            //remove resource
-            settlementNoteAdviceFacade.remove(id);
-
-            int affectedRows = 1;
-            Report stat = new Report(settlementNoteAdviceFacade.count());
-            stat.setAffectedRows(affectedRows);
-            stat.setPreviousRows(previousRows);
-
-            // 200 
-            Response response = Response.ok(stat).build();
-            return response;
-        } catch (UnknownResourceException ex) {
+            //Pause for 4 seconds to finish notification
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
             Logger.getLogger(SettlementNoteAdviceAdminResource.class.getName()).log(Level.SEVERE, null, ex);
-            Response response = Response.status(Response.Status.NOT_FOUND).build();
-            return response;
         }
+        // remove event(s) binding to the resource
+        List<SettlementNoteAdviceEvent> events = eventFacade.findAll();
+        for (SettlementNoteAdviceEvent event : events) {
+            if (event.getEvent().getId().equals(id)) {
+                eventFacade.remove(event.getId());
+            }
+        }
+        //remove resource
+        settlementNoteAdviceFacade.remove(id);
+
+        int affectedRows = 1;
+        Report stat = new Report(settlementNoteAdviceFacade.count());
+        stat.setAffectedRows(affectedRows);
+        stat.setPreviousRows(previousRows);
+
+        // 200 
+        Response response = Response.ok(stat).build();
+        return response;
     }
 
     @GET

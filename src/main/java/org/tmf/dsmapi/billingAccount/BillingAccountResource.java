@@ -142,8 +142,8 @@ public class BillingAccountResource {
         Response response = null;
         BillingAccount currentProduct = billingAccountFacade.updateAttributs(id, partialUsage);
 
-        // 201 OK + location
-        response = Response.status(Response.Status.CREATED).entity(currentProduct).build();
+        // 200 OK + location
+        response = Response.status(Response.Status.OK).entity(currentProduct).build();
 
         return response;
     }

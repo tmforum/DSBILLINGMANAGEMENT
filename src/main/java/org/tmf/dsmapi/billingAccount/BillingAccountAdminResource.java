@@ -15,7 +15,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import org.tmf.dsmapi.commons.exceptions.BadUsageException;
 import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
 import org.tmf.dsmapi.commons.jaxrs.Report;
@@ -38,8 +40,8 @@ public class BillingAccountAdminResource {
     BillingAccountFacade billingAccountFacade;
     @EJB
     BillingAccountEventFacade eventFacade;
-    @EJB
-    BillingAccountEventPublisherLocal publisher;
+//    @EJB
+//    BillingAccountEventPublisherLocal publisher;
 
     @GET
     @Produces({"application/json"})
@@ -57,18 +59,25 @@ public class BillingAccountAdminResource {
     @POST
     @Consumes({"application/json"})
     @Produces({"application/json"})
-    public Response post(List<BillingAccount> entities) {
+    public Response post(List<BillingAccount> entities, @Context UriInfo info) throws UnknownResourceException {
 
         if (entities == null) {
             return Response.status(Response.Status.BAD_REQUEST.getStatusCode()).build();
         }
 
         int previousRows = billingAccountFacade.count();
-        int affectedRows;
+        int affectedRows =0;
 
         // Try to persist entities
         try {
-            affectedRows = billingAccountFacade.create(entities);
+            for (BillingAccount entitie : entities) {
+                billingAccountFacade.create(entitie);
+                entitie.setHref(info.getAbsolutePath() + "/" + Long.toString(entitie.getId()));
+                billingAccountFacade.edit(entitie);
+                affectedRows = affectedRows + 1;
+//                publisher.createNotification(entitie, new Date());
+            }
+//            affectedRows = billingAccountFacade.create(entities);
         } catch (BadUsageException e) {
             return Response.status(Response.Status.BAD_REQUEST.getStatusCode()).build();
         }
@@ -93,8 +102,8 @@ public class BillingAccountAdminResource {
         if (billingAccount != null) {
             entity.setId(id);
             billingAccountFacade.edit(entity);
-            // 201 OK + location
-            response = Response.status(Response.Status.CREATED).entity(entity).build();
+            // 200 OK + location
+            response = Response.status(Response.Status.OK).entity(entity).build();
 
         } else {
             // 404 not found
