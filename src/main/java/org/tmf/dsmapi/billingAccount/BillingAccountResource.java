@@ -140,7 +140,7 @@ public class BillingAccountResource {
     @Produces({"application/json"})
     public Response patch(@PathParam("id") long id, BillingAccount partialUsage) throws BadUsageException, UnknownResourceException {
         Response response = null;
-        BillingAccount currentProduct = billingAccountFacade.updateAttributs(id, partialUsage);
+        BillingAccount currentProduct = billingAccountFacade.patchAttributs(id, partialUsage);
 
         // 200 OK + location
         response = Response.status(Response.Status.OK).entity(currentProduct).build();

@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.tmf.dsmapi.commons.exceptions.BadUsageException;
 import org.tmf.dsmapi.commons.exceptions.ExceptionType;
 import org.tmf.dsmapi.billingAccount.model.SettlementNoteAdvice;
+import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
 import org.tmf.dsmapi.settlementNoteAdvice.event.SettlementNoteAdviceEventPublisherLocal;
 
 @Stateless
@@ -27,13 +28,13 @@ public class SettlementNoteAdviceFacade extends AbstractFacade<SettlementNoteAdv
         return em;
     }
 
-    @Override
-    public void create(SettlementNoteAdvice entity) throws BadUsageException {
-        if (entity.getId() != null) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_GENERIC, "While creating SettlementNoteAdvice, id must be null");
+    public void checkCreation(SettlementNoteAdvice newSettlementNoteAdvice) throws BadUsageException, UnknownResourceException {
+        if (newSettlementNoteAdvice.getId() != null) {
+            if (this.find(newSettlementNoteAdvice.getId()) != null) {
+                throw new BadUsageException(ExceptionType.BAD_USAGE_GENERIC,
+                        "Duplicate Exception, SettlementNoteAdvice with same id :" + newSettlementNoteAdvice.getId() + " alreay exists");
+            }
         }
-
-        super.create(entity);
     }
 
 }

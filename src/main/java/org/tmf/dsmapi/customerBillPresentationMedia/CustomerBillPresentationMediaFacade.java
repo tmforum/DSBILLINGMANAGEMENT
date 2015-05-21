@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.tmf.dsmapi.commons.exceptions.BadUsageException;
 import org.tmf.dsmapi.commons.exceptions.ExceptionType;
 import org.tmf.dsmapi.billingAccount.model.CustomerBillPresentationMedia;
+import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
 import org.tmf.dsmapi.customerBillPresentationMedia.event.CustomerBillPresentationMediaEventPublisherLocal;
 
 @Stateless
@@ -27,13 +28,13 @@ public class CustomerBillPresentationMediaFacade extends AbstractFacade<Customer
         return em;
     }
 
-    @Override
-    public void create(CustomerBillPresentationMedia entity) throws BadUsageException {
-        if (entity.getId() != null) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_GENERIC, "While creating CustomerBillPresentationMedia, id must be null");
+    public void checkCreation(CustomerBillPresentationMedia newCustomerBillPresentationMedia) throws BadUsageException, UnknownResourceException {
+        if (newCustomerBillPresentationMedia.getId() != null) {
+            if (this.find(newCustomerBillPresentationMedia.getId()) != null) {
+                throw new BadUsageException(ExceptionType.BAD_USAGE_GENERIC,
+                        "Duplicate Exception, CustomerBillPresentationMedia with same id :" + newCustomerBillPresentationMedia.getId() + " alreay exists");
+            }
         }
-
-        super.create(entity);
     }
 
 }

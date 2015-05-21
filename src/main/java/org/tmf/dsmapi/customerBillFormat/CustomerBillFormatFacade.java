@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.tmf.dsmapi.commons.exceptions.BadUsageException;
 import org.tmf.dsmapi.commons.exceptions.ExceptionType;
 import org.tmf.dsmapi.billingAccount.model.CustomerBillFormat;
+import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
 import org.tmf.dsmapi.customerBillFormat.event.CustomerBillFormatEventPublisherLocal;
 
 @Stateless
@@ -27,13 +28,13 @@ public class CustomerBillFormatFacade extends AbstractFacade<CustomerBillFormat>
         return em;
     }
 
-    @Override
-    public void create(CustomerBillFormat entity) throws BadUsageException {
-        if (entity.getId() != null) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_GENERIC, "While creating CustomerBillFormat, id must be null");
+    public void checkCreation(CustomerBillFormat newCustomerBillFormat) throws BadUsageException, UnknownResourceException {
+        if (newCustomerBillFormat.getId() != null) {
+            if (this.find(newCustomerBillFormat.getId()) != null) {
+                throw new BadUsageException(ExceptionType.BAD_USAGE_GENERIC,
+                        "Duplicate Exception, CustomerBillFormat with same id :" + newCustomerBillFormat.getId() + " alreay exists");
+            }
         }
-
-        super.create(entity);
     }
 
 }

@@ -35,21 +35,26 @@ public class AppliedCustomerBillingChargeFacade extends AbstractFacade<AppliedCu
         return em;
     }
 
-    public void checkCreation(AppliedCustomerBillingCharge newBillingCharge) throws BadUsageException {
+    public void checkCreation(AppliedCustomerBillingCharge newBillingCharge) throws BadUsageException, UnknownResourceException {
 
         if (newBillingCharge.getId() != null) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_GENERIC, "While creating AppliedCustomerBillingCharge, id must be null");
+            if (this.find(newBillingCharge.getId()) != null) {
+                throw new BadUsageException(ExceptionType.BAD_USAGE_GENERIC, 
+                        "Duplicate Exception, BillingCharge with same id :"+newBillingCharge.getId()+" alreay exists");
+            }
         }
 
         if (null == newBillingCharge.getDate()) {
             newBillingCharge.setDate(new Date());
         }
 
-        if (null == newBillingCharge.getType()) {
+        if (null == newBillingCharge.getType()
+                || newBillingCharge.getType().isEmpty()) {
             throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "type is mandatory");
         }
 
-        if (null == newBillingCharge.getCurrencyCode()) {
+        if (null == newBillingCharge.getCurrencyCode()
+                || newBillingCharge.getCurrencyCode().isEmpty()) {
             throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "currencyCode is mandatory");
         }
 
@@ -61,7 +66,8 @@ public class AppliedCustomerBillingChargeFacade extends AbstractFacade<AppliedCu
                 && !newBillingCharge.getServiceId().isEmpty()) {
             for (ServiceId servideId : newBillingCharge.getServiceId()) {
                 //TODO return 400 if service.id is invalid
-                if (null == servideId.getId()) {
+                if (null == servideId.getId()
+                        || servideId.getId().isEmpty()) {
                     throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "serviceId.id is mandatory");
                 }
             }
@@ -70,7 +76,8 @@ public class AppliedCustomerBillingChargeFacade extends AbstractFacade<AppliedCu
         if (null != newBillingCharge.getProductSpecification()
                 && !newBillingCharge.getProductSpecification().isEmpty()) {
             for (ProductSpecification productSpecification : newBillingCharge.getProductSpecification()) {
-                if (null == productSpecification.getName()) {
+                if (null == productSpecification.getName()
+                        || productSpecification.getName().isEmpty()) {
                     throw new BadUsageException(ExceptionType.BAD_USAGE_MANDATORY_FIELDS, "productSpecification.name is mandatory");
                 }
             }
@@ -89,9 +96,8 @@ public class AppliedCustomerBillingChargeFacade extends AbstractFacade<AppliedCu
                 }
             }
         }
-        
-        //TODO Service must have been created previously, productSpecification  must have been created previously
 
+        //TODO Service must have been created previously, productSpecification  must have been created previously
     }
 
     public AppliedCustomerBillingCharge updateAttributs(long id, AppliedCustomerBillingCharge partialCBC) throws UnknownResourceException, BadUsageException {
@@ -102,9 +108,11 @@ public class AppliedCustomerBillingChargeFacade extends AbstractFacade<AppliedCu
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode node = mapper.convertValue(partialCBC, JsonNode.class);
+        JsonNode node = mapper.convertValue(partialCBC, JsonNode.class
+        );
 
         partialCBC.setId(id);
+
         if (BeanUtils.patch(currentCBC, partialCBC, node)) {
             publisher.valueChangedNotification(currentCBC, new Date());
         }

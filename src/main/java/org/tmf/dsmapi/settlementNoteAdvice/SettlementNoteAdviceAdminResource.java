@@ -65,13 +65,13 @@ public class SettlementNoteAdviceAdminResource {
         // Try to persist entities
         try {
             for (SettlementNoteAdvice entitie : entities) {
+                settlementNoteAdviceFacade.checkCreation(entitie);
                 settlementNoteAdviceFacade.create(entitie);
                 entitie.setHref(info.getAbsolutePath() + "/" + Long.toString(entitie.getId()));
                 settlementNoteAdviceFacade.edit(entitie);
                 affectedRows = affectedRows + 1;
 //                publisher.createNotification(entitie, new Date());
             }
-//            affectedRows = settlementNoteAdviceFacade.create(entities);
         } catch (BadUsageException e) {
             return Response.status(Response.Status.BAD_REQUEST.getStatusCode()).build();
         }

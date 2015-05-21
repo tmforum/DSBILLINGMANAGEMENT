@@ -65,13 +65,13 @@ public class CustomerBillFormatAdminResource {
         // Try to persist entities
         try {
             for (CustomerBillFormat entitie : entities) {
+                customerBillFormatFacade.checkCreation(entitie);
                 customerBillFormatFacade.create(entitie);
                 entitie.setHref(info.getAbsolutePath() + "/" + Long.toString(entitie.getId()));
                 customerBillFormatFacade.edit(entitie);
                 affectedRows = affectedRows + 1;
 //                publisher.createNotification(entitie, new Date());
             }
-//            affectedRows = customerBillFormatFacade.create(entities);
         } catch (BadUsageException e) {
             return Response.status(Response.Status.BAD_REQUEST.getStatusCode()).build();
         }

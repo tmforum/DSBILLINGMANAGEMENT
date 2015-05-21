@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.tmf.dsmapi.commons.exceptions.BadUsageException;
 import org.tmf.dsmapi.commons.exceptions.ExceptionType;
 import org.tmf.dsmapi.billingAccount.model.CustomerBillingCycleSpecification;
+import org.tmf.dsmapi.commons.exceptions.UnknownResourceException;
 import org.tmf.dsmapi.customerBillingCycleSpecification.event.CustomerBillingCycleSpecificationEventPublisherLocal;
 
 @Stateless
@@ -27,13 +28,13 @@ public class CustomerBillingCycleSpecificationFacade extends AbstractFacade<Cust
         return em;
     }
 
-    @Override
-    public void create(CustomerBillingCycleSpecification entity) throws BadUsageException {
-        if (entity.getId() != null) {
-            throw new BadUsageException(ExceptionType.BAD_USAGE_GENERIC, "While creating CustomerBillingCycleSpecification, id must be null");
+    public void checkCreation(CustomerBillingCycleSpecification newCustomerBillingCycleSpecification) throws BadUsageException, UnknownResourceException {
+        if (newCustomerBillingCycleSpecification.getId() != null) {
+            if (this.find(newCustomerBillingCycleSpecification.getId()) != null) {
+                throw new BadUsageException(ExceptionType.BAD_USAGE_GENERIC,
+                        "Duplicate Exception, CustomerBillingCycleSpecification with same id :" + newCustomerBillingCycleSpecification.getId() + " alreay exists");
+            }
         }
-
-        super.create(entity);
     }
 
 }
